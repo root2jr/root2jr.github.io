@@ -38,7 +38,7 @@ def send_contact_email(request: Request, form: ContactForm):
     
     params: resend.Emails.SendParams = {
         "from": "onboarding@resend.dev", 
-        "to": ["dev.jram18@gmail.com.com"],
+        "to": ["dev.jram18@gmail.com"],
         "subject": f"Portfolio Contact: {form.name}",
         "reply_to": form.email,
         "html": f"""

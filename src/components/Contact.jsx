@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../css/Contact.css';
+import axios from 'axios'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,9 +59,14 @@ function Contact() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert('Form submitted! (This is a demo)');
+    try {
+      const response = await axios.post("https://root2jr-github-io.onrender.com/contact",formData);
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error:',error);
+    }
     setFormData({ name: '', email: '', message: '' });
   };
 
