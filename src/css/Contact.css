@@ -1,0 +1,92 @@
+.contact {
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding: 8rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.contact-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  width: 100%;
+}
+
+.contact-form {
+  max-width: 700px;
+}
+
+.form-group {
+  margin-bottom: 2rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: #000000;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #000000;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.form-submit {
+  padding: 1.25rem 3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #000000;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+  margin-top: 1rem;
+}
+
+.form-submit:hover {
+  background-color: rgba(0, 0, 0, 0.85);
+  transform: translateY(-2px);
+}
+
+.form-submit:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 968px) {
+  .contact {
+    padding: 6rem 0;
+  }
+
+  .contact-container {
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .form-submit {
+    width: 100%;
+  }
+}
