@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+fastapi-mail
+python-dotenv
+slowapi
+email-validator
+pydantic
+resend
