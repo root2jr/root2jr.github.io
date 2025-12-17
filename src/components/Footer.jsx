@@ -65,7 +65,7 @@ const Footer = () => {
             <h3 className="footer-heading">Sitemap</h3>
             <ul>
               <li><a href="#">Home</a></li>
-              <li><a href="#services">Services</a></li>
+              <li><a href="#services">Skills</a></li>
               <li><a href="#selected-works">Works</a></li>
               <li><a href="#about">About</a></li>
             </ul>
@@ -84,7 +84,7 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <span className="copyright">© {date.getFullYear()} Jayaram. All Rights Reserved.</span>
-          <span className="location">Made with React & GSAP in Chennai.</span>
+          <span className="location">Made with React & GSAP</span>
         </div>
       </div>
     </footer>

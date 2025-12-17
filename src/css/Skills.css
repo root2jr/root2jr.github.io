@@ -109,6 +109,9 @@
 .skill-item:hover .skill-description{
   color: var(--border-color);
 }
+.skill-item:hover .skill-number{
+  color: var(--border-color);
+}
 
 /* --- Tags (Pills) --- */
 .skill-tags {

@@ -1,73 +1,82 @@
 :root {
-  --dark-bg: #050505;
-  --dark-text: #ffffff;
-  --dark-accent: #888888;
+  --bg-color: #050505;
+  --text-main: #ffffff;
+  --text-muted: #888888;
+  --border-subtle: rgba(255, 255, 255, 0.15);
+  --accent-glow: rgba(255, 255, 255, 0.1);
 }
 
 .projects-section {
   width: 100%;
   min-height: 100vh;
-  background-color: var(--dark-bg);
-  color: var(--dark-text);
-  padding: 120px 20px;
-  font-family: 'Inter', sans-serif;
-  overflow: hidden; /* Hide image scale overflow */
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  padding: 120px 24px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: hidden;
 }
 
 .projects-container {
-  max-width: 1200px;
+  max-width: 1300px; /* Slightly wider for modern screens */
   margin: 0 auto;
 }
 
 /* --- Header --- */
 .projects-header {
-  margin-bottom: 100px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 80px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
 }
 
 .section-title-2 {
-  font-size: clamp(3rem, 7vw, 6rem);
-  font-weight: 900;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 800;
   text-transform: uppercase;
   line-height: 1;
-  letter-spacing: -2px;
-  color: var(--dark-text);
+  letter-spacing: -0.04em;
+  margin: 0;
 }
 
-/* Optional outline style matching reference */
+/* Elegant Outline Effect */
 .outline-text {
-   /* Uncomment below for outline style, keeping solid for now for better readability */
-    -webkit-text-stroke: 1px var(--dark-text);
-   color: transparent; 
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-main);
+  transition: all 0.5s ease;
 }
 
+.projects-header:hover .outline-text {
+  /* Fills in on hover for a premium feel */
+  color: var(--text-main);
+  -webkit-text-stroke: 0;
+}
 
 /* --- Grid Layout --- */
 .projects-grid {
   display: grid;
-  /* 2 Columns on large screens */
-  grid-template-columns: repeat(2, 1fr); 
-  gap: 80px 40px; /* Row gap 80px, Col gap 40px */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 80px 50px; /* Row / Column */
 }
 
-/* --- Project Card Component --- */
+/* --- Project Card --- */
 .project-card {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 24px;
 }
 
-/* --- Image Hover Effects --- */
-.project-image-container {
+/* --- Image Area --- */
+.project-image-wrapper {
   position: relative;
   width: 100%;
-  /* Aspect ratio for consistent image boxes (e.g., 4:3) */
-  padding-top: 75%; 
+  padding-top: 60%; /* 16:9ish aspect ratio is more cinematic */
+  border-radius: 8px;
   overflow: hidden;
-  border-radius: 4px;
-  background-color: #1a1a1a; /* Placeholder color while loading */
+  background-color: #111;
   display: block;
+  border: 1px solid var(--border-subtle);
 }
 
 .project-img {
@@ -77,128 +86,203 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  filter: grayscale(100%); /* Start Black & White */
 }
 
-/* Dark overlay on hover */
 .img-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: 1;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.4s ease;
 }
 
-/* Button appears on hover */
+/* "Live Demo" Button (Centered on Image) */
 .view-project-btn {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.8);
-  background: var(--dark-text);
-  color: var(--dark-bg);
-  padding: 12px 24px;
+  transform: translate(-50%, -40%) scale(0.9);
+  background: white;
+  color: black;
+  padding: 14px 28px;
+  font-size: 0.9rem;
   font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 1px;
   opacity: 0;
   z-index: 2;
-  transition: all 0.4s ease;
-  text-align: center;
-  pointer-events: none; /* Let clicks pass to the anchor tag */
+  border-radius: 4px;
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  pointer-events: none;
 }
 
-/* Hover Actions */
-.project-image-container:hover .project-img {
-  transform: scale(1.05); /* Subtle Zoom */
+/* Hover Effects */
+.project-image-wrapper:hover .project-img {
+  transform: scale(1.08);
+  filter: grayscale(0%); /* Color comes back on hover */
 }
-.project-image-container:hover .img-overlay {
-  background-color: rgba(0,0,0,0.5); /* Darken */
+
+.project-image-wrapper:hover .img-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
 }
-.project-image-container:hover .view-project-btn {
+
+.project-image-wrapper:hover .view-project-btn {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
 }
 
-
-/* --- Project Content Info --- */
+/* --- Content Area --- */
 .project-content {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 16px;
 }
 
-.project-top-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+.project-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align top if title wraps */
+  gap: 20px;
 }
 
 .project-title {
-  font-size: 1.75rem;
-  font-weight: 800;
-  letter-spacing: -0.5px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   margin: 0;
+  line-height: 1.2;
 }
 
+/* --- THE NEW CODE BUTTON --- */
+.code-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background-color: transparent;
+  border: 1px solid var(--border-subtle);
+  border-radius: 100px; /* Pill shape */
+  color: var(--text-main);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.code-btn .arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+.code-btn:hover {
+  background-color: var(--text-main);
+  color: var(--bg-color);
+  border-color: var(--text-main);
+}
+
+.code-btn:hover .arrow-icon {
+  transform: translate(2px, -2px); /* Diagonal movement */
+}
+
+/* --- Description --- */
 .project-description {
   font-size: 1rem;
-  color: var(--dark-accent);
+  color: var(--text-muted);
   line-height: 1.6;
-  max-width: 90%;
-}
-
-/* Links like "Code ↗" */
-.icon-link {
-    color: var(--dark-text);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-.arrow-diag {
-    font-size: 1.2rem;
-    line-height: 0.8;
+  max-width: 95%;
+  margin: 0;
 }
 
 /* --- Tech Tags --- */
 .tech-stack {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 8px;
+  margin-top: 4px;
 }
 
 .tech-tag {
   font-size: 0.75rem;
-  color: var(--dark-accent);
-  border: 1px solid #333;
-  padding: 6px 12px;
-  border-radius: 50px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-weight: 600;
+  color: #ccc;
+  background: rgba(255, 255, 255, 0.05); /* Slight fill */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 14px;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
+  transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: white;
 }
 
 
-/* --- Responsive --- */
-@media (max-width: 900px) {
+/* --- RESPONSIVENESS (Supremely Enhanced) --- */
+
+/* Tablet (Portrait) & Smaller Laptops */
+@media (max-width: 1024px) {
+  .projects-section {
+    padding: 80px 20px;
+  }
+  
   .projects-grid {
-    /* Switch to 1 column on tablets/mobile */
+    gap: 60px 30px;
+  }
+}
+
+/* Mobile & Small Tablets */
+@media (max-width: 768px) {
+  .projects-grid {
+    /* Switch to single column */
     grid-template-columns: 1fr;
-    gap: 60px;
+    gap: 50px;
   }
-  
+
   .projects-header {
-      margin-bottom: 60px;
+    margin-bottom: 50px;
   }
   
+  /* Make titles easier to read on mobile */
+  .section-title-2 {
+    font-size: 2.5rem; 
+  }
+
   .project-title {
-      font-size: 1.5rem;
+    font-size: 1.35rem;
+  }
+  
+  .project-image-wrapper {
+    /* Slightly taller on mobile for better visibility */
+    padding-top: 65%;
+  }
+
+  /* Make code button slightly larger touch target */
+  .code-btn {
+    padding: 10px 20px;
+  }
+}
+
+/* Very Small Mobile (e.g., iPhone SE) */
+@media (max-width: 380px) {
+  .projects-section {
+    padding: 60px 16px;
+  }
+
+  .project-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .code-btn {
+    align-self: flex-start;
   }
 }

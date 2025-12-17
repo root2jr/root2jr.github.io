@@ -1,0 +1,114 @@
+:root {
+  --nf-bg: #050505;
+  --nf-text: #ffffff;
+  --nf-grey: #888888;
+}
+
+.nf-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--nf-bg);
+  color: var(--nf-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  opacity: 0; /* Hidden initially for GSAP */
+  visibility: hidden;
+  z-index: 50; /* Below nav (999) but above content */
+}
+
+.nf-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  z-index: 2; /* Sit above grain */
+}
+
+/* Massive 404 Title */
+.nf-title {
+  font-size: clamp(8rem, 20vw, 20rem); /* Huge responsive text */
+  font-weight: 900;
+  line-height: 0.85;
+  margin: 0;
+  
+  /* Outline Style matching your theme */
+  color: transparent;
+  -webkit-text-stroke: 2px var(--nf-text);
+  
+  /* Optional: Fill it slightly on hover */
+  transition: color 0.5s ease;
+  cursor: default;
+}
+
+.nf-title:hover {
+  color: rgba(255, 255, 255, 0.1);
+}
+
+/* Subtext */
+.nf-subtext {
+  font-size: 1.1rem;
+  color: var(--nf-grey);
+  font-weight: 400;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* Sleek Pill Button */
+.nf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 28px;
+  background-color: var(--nf-text); /* Solid White */
+  color: var(--nf-bg); /* Black text */
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.nf-arrow {
+  transition: transform 0.3s ease;
+}
+
+.nf-btn:hover {
+  transform: scale(1.05);
+}
+
+.nf-btn:hover .nf-arrow {
+  transform: translate(-3px, 3px); /* Points down-left towards 'home' metaphorically */
+}
+
+/* Subtle Grain Overlay for Texture */
+.nf-grain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .nf-title {
+    -webkit-text-stroke: 1px var(--nf-text); /* Thinner stroke on mobile */
+  }
+  
+  .nf-subtext {
+    font-size: 0.95rem;
+    max-width: 80%;
+  }
+}

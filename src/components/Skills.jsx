@@ -41,8 +41,6 @@ const Skills = () => {
 
   useEffect(() => {
     const el = sectionRef.current;
-
-    // 1. Animate Title
     gsap.fromTo(titleRef.current, 
       { y: 50, opacity: 0 },
       {
@@ -52,12 +50,12 @@ const Skills = () => {
         ease: "power3.out",
         scrollTrigger: {
           trigger: titleRef.current,
-          start: "top 80%", // Animation starts when title enters bottom 20% of viewport
+          start: "top 80%", 
         }
       }
     );
 
-    // 2. Animate List Items (Staggered)
+
     skillItemsRef.current.forEach((item, index) => {
       gsap.fromTo(item,
         { y: 100, opacity: 0 },
@@ -68,7 +66,7 @@ const Skills = () => {
           ease: "power3.out",
           scrollTrigger: {
             trigger: item,
-            start: "top 85%", // Triggers slightly earlier for each item
+            start: "top 85%", 
           }
         }
       );

@@ -151,6 +151,12 @@ const Contact = () => {
                 dev.jram18@gmail.com
               </a>
             </div>
+            <div className="detail-group">
+              <span className="detail-label">Mobile</span>
+              <a href="tel:9342772002" className="detail-link email-link">
+                +91 9342772002
+              </a>
+            </div>
 
             <div className="detail-group">
               <span className="detail-label">Location</span>
