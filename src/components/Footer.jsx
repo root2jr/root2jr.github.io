@@ -1,96 +1,94 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 import '../css/Footer.css';
 
-gsap.registerPlugin(ScrollTrigger);
-
-function Footer() {
-  const footerRef = useRef(null);
+const Footer = () => {
+  const marqueeRef = useRef(null);
+  const footerContentRef = useRef(null);
+  const date = new Date();
 
   useEffect(() => {
-    gsap.fromTo(
-      footerRef.current,
-      { opacity: 0, y: 30 },
+    // 1. Infinite Marquee Animation
+    // We clone the text to create a seamless loop
+    const marqueeText = marqueeRef.current.querySelector('.marquee-inner');
+    const clone = marqueeText.cloneNode(true);
+    marqueeRef.current.appendChild(clone);
+
+    gsap.to(marqueeRef.current.children, {
+      xPercent: -100,
+      repeat: -1,
+      duration: 20, // Adjust speed here
+      ease: "linear"
+    });
+
+    // 2. Footer Content Reveal on Scroll
+    // Simple fade in as it comes into view
+    gsap.fromTo(footerContentRef.current,
+      { y: 50, opacity: 0 },
       {
-        opacity: 1,
         y: 0,
+        opacity: 1,
         duration: 1,
-        ease: 'power3.out',
+        ease: "power3.out",
         scrollTrigger: {
-          trigger: footerRef.current,
-          start: 'top 90%',
-        },
+          trigger: footerContentRef.current,
+          start: "top 95%",
+        }
       }
     );
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
-    <footer className="footer" ref={footerRef}>
-      <div className="footer-container">
-        <div className="footer-content">
-          <div className="footer-left">
-            <h3 className="footer-name">Jayaram</h3>
+    <footer className="footer-section">
+      {/* Infinite Scrolling Marquee */}
+      <div className="marquee-container">
+        <div className="track" ref={marqueeRef}>
+          <div className="marquee-inner">
+             OPEN FOR WORK — MERN STACK — REACT NATIVE — AI INTEGRATION — 
+          </div>
+        </div>
+      </div>
+
+      <div className="footer-container" ref={footerContentRef}>
+        <div className="footer-top">
+          
+          {/* Brand Column */}
+          <div className="footer-brand">
+            <h2 className="footer-logo">Jayaram</h2>
             <p className="footer-tagline">
-              Building digital experiences, one project at a time.
+              Crafting digital experiences with code and creativity.
             </p>
           </div>
 
+          {/* Navigation Links */}
           <div className="footer-links">
-            <div className="footer-section">
-              <h4 className="footer-section-title">Connect</h4>
-              <div className="social-links">
-                <a
-                  href="http://github.com/root2jr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-link"
-                >
-                  GitHub
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/jayaraman-pv/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-link"
-                >
-                  LinkedIn
-                </a>
-                <a
-                  href="https://www.instagram.com/itz_jram18"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-link"
-                >
-                  Instagram
-                </a>
-                <a
-                  href="mailto:hello@dev.jram18@gmail.com"
-                  className="social-link"
-                >
-                  Email
-                </a>
-              </div>
-            </div>
+            <h3 className="footer-heading">Sitemap</h3>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#selected-works">Works</a></li>
+              <li><a href="#about">About</a></li>
+            </ul>
+          </div>
 
-            <button onClick={scrollToTop} className="back-to-top">
-              Back to Top ↑
-            </button>
+          {/* Social Links */}
+          <div className="footer-links">
+            <h3 className="footer-heading">Socials</h3>
+            <ul>
+              <li><a href="https://www.linkedin.com/in/jayaraman-pv/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+              <li><a href="https://www.github.com/root2jr" target="_blank" rel="noreferrer">GitHub</a></li>
+              <li><a href="https://instagram.com/itz_jram18" target="_blank" rel="noreferrer">Instagram</a></li>
+            </ul>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <p className="footer-credit">
-            Designed & Built by Jayaram © {new Date().getFullYear()}
-          </p>
+          <span className="copyright">© {date.getFullYear()} Jayaram. All Rights Reserved.</span>
+          <span className="location">Made with React & GSAP in Chennai.</span>
         </div>
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;

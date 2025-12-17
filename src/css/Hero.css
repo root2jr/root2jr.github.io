@@ -1,80 +1,133 @@
-.hero {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffffff;
-  overflow: hidden;
+/* Import a clean sans-serif font (Google Fonts example) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+
+:root {
+  --bg-color: #050505; /* Deep Black */
+  --text-color: #ffffff; /* Pure White */
+  --accent-gray: #888888;
 }
 
-.hero-canvas {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center horizontally */
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  padding: 0 20px;
+}
+
+
+/* --- Particles Background --- */
+.particles-wrapper {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.15;
-  pointer-events: none;
+  z-index: 1;
+  pointer-events: none; /* Ensure clicks pass through */
 }
 
+.particle {
+  position: absolute;
+  background-color: var(--text-color);
+  opacity: 0.3; /* Subtle dot effect */
+}
+
+/* --- Main Content --- */
 .hero-content {
   position: relative;
-  z-index: 10;
-  text-align: center;
-  max-width: 900px;
-  padding: 0 2rem;
+  z-index: 2;
+  text-align: center; /* Matches the centered look of the reference */
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero-title {
-  font-size: clamp(3rem, 10vw, 8rem);
+  font-size: clamp(3rem, 10vw, 7rem); /* Responsive giant text */
   font-weight: 900;
-  color: #000000;
-  margin: 0;
+  line-height: 0.95;
   letter-spacing: -0.04em;
-  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+/* Optional: Outline effect for one word to add style */
+.outline-text {
+  /* Creating a stroke effect if desired, or keep solid white */
+  /* -webkit-text-stroke: 2px white;
+  color: transparent; */
+  color: var(--text-color); /* Kept solid for readability */
 }
 
 .hero-subtitle {
-  font-size: clamp(1.2rem, 3vw, 2rem);
-  font-weight: 400;
-  color: #000000;
-  margin: 2rem 0 1rem;
-  letter-spacing: 0.05em;
-}
-
-.hero-tagline {
   font-size: clamp(1rem, 2vw, 1.25rem);
-  font-weight: 300;
-  color: rgba(0, 0, 0, 0.7);
-  margin: 0;
-  letter-spacing: 0.02em;
+  color: var(--accent-gray);
+  max-width: 500px;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+  font-weight: 400;
 }
-.hero-content button {
-  padding: 1.25rem 3rem;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #000000;
-  background:transparent;
-  border:1px solid #000000;
+
+/* --- CTA Button --- */
+.hero-cta {
+  padding: 18px 36px;
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
-  letter-spacing: 0.05em;
-  margin-top: 2rem;
-}
-.hero-content button:hover{
-  background-color: #000000;
-  border:none;
-  color:#ffffff;
-  transition: .5s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.hero-cta:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+}
+.hero-content a{
+  text-decoration: none;
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.hero-cta:hover .arrow {
+  transform: translateX(5px);
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-  .hero-content {
-    padding: 0 1.5rem;
+  .hero-container {
+    align-items: center; /* Ensure vertical center on mobile */
   }
-
-  .hero-subtitle {
-    margin: 1.5rem 0 1rem;
+  
+  .hero-title {
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-cta {
+    padding: 15px 30px;
   }
 }

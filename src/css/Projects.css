@@ -1,140 +1,204 @@
-.projects {
+:root {
+  --dark-bg: #050505;
+  --dark-text: #ffffff;
+  --dark-accent: #888888;
+}
+
+.projects-section {
+  width: 100%;
   min-height: 100vh;
-  background-color: #ffffff;
-  padding: 8rem 0;
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+  padding: 120px 20px;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden; /* Hide image scale overflow */
 }
 
 .projects-container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 3rem;
-  width: 100%;
 }
 
-.projects-list {
+/* --- Header --- */
+.projects-header {
+  margin-bottom: 100px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.section-title-2 {
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: -2px;
+  color: var(--dark-text);
+}
+
+/* Optional outline style matching reference */
+.outline-text {
+   /* Uncomment below for outline style, keeping solid for now for better readability */
+    -webkit-text-stroke: 1px var(--dark-text);
+   color: transparent; 
+}
+
+
+/* --- Grid Layout --- */
+.projects-grid {
+  display: grid;
+  /* 2 Columns on large screens */
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 80px 40px; /* Row gap 80px, Col gap 40px */
+}
+
+/* --- Project Card Component --- */
+.project-card {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 25px;
 }
 
-.project-item {
-  padding: 3rem;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
+/* --- Image Hover Effects --- */
+.project-image-container {
   position: relative;
+  width: 100%;
+  /* Aspect ratio for consistent image boxes (e.g., 4:3) */
+  padding-top: 75%; 
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: #1a1a1a; /* Placeholder color while loading */
+  display: block;
 }
 
-.project-item::before {
-  content: '';
+.project-img {
   position: absolute;
   top: 0;
   left: 0;
-  width: 0;
-  height: 2px;
-  background-color: #000000;
-  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.project-item:hover::before {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.project-item:hover {
-  transform: translateX(8px);
-  border-color: #000000;
+/* Dark overlay on hover */
+.img-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.2);
+  z-index: 1;
+  transition: background-color 0.3s ease;
 }
 
-.project-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.project-number {
-  font-size: 0.875rem;
+/* Button appears on hover */
+.view-project-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: var(--dark-text);
+  color: var(--dark-bg);
+  padding: 12px 24px;
   font-weight: 700;
-  color: rgba(0, 0, 0, 0.4);
-  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0;
+  z-index: 2;
+  transition: all 0.4s ease;
+  text-align: center;
+  pointer-events: none; /* Let clicks pass to the anchor tag */
 }
 
-.project-category {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: rgba(0, 0, 0, 0.6);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+/* Hover Actions */
+.project-image-container:hover .project-img {
+  transform: scale(1.05); /* Subtle Zoom */
+}
+.project-image-container:hover .img-overlay {
+  background-color: rgba(0,0,0,0.5); /* Darken */
+}
+.project-image-container:hover .view-project-btn {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+
+/* --- Project Content Info --- */
+.project-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.project-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .project-title {
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 700;
-  color: #000000;
-  margin: 0 0 1rem 0;
-  letter-spacing: -0.02em;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin: 0;
 }
 
 .project-description {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: rgba(0, 0, 0, 0.7);
-  margin: 0 0 2rem 0;
-  max-width: 800px;
+  font-size: 1rem;
+  color: var(--dark-accent);
+  line-height: 1.6;
+  max-width: 90%;
 }
 
-.project-tech {
+/* Links like "Code ↗" */
+.icon-link {
+    color: var(--dark-text);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.arrow-diag {
+    font-size: 1.2rem;
+    line-height: 0.8;
+}
+
+/* --- Tech Tags --- */
+.tech-stack {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .tech-tag {
-  padding: 0.5rem 1rem;
-  background-color: #000000;
-  color: #ffffff;
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  transition: all 0.3s ease;
+  font-size: 0.75rem;
+  color: var(--dark-accent);
+  border: 1px solid #333;
+  padding: 6px 12px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
 }
 
-.tech-tag:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-  transform: translateY(-2px);
-}
 
-@media (max-width: 968px) {
-  .projects {
-    padding: 6rem 0;
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .projects-grid {
+    /* Switch to 1 column on tablets/mobile */
+    grid-template-columns: 1fr;
+    gap: 60px;
   }
-
-  .projects-container {
-    padding: 0 2rem;
+  
+  .projects-header {
+      margin-bottom: 60px;
   }
-
-  .project-item {
-    padding: 2rem;
-  }
-
-  .projects-list {
-    gap: 2rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .project-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .project-tech {
-    gap: 0.5rem;
-  }
-
-  .tech-tag {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
+  
+  .project-title {
+      font-size: 1.5rem;
   }
 }

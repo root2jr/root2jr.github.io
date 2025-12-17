@@ -1,70 +1,108 @@
-import { useEffect, useState } from 'react';
-import { gsap } from 'gsap';
+import React, { useState, useRef, useEffect } from 'react';
+import gsap from 'gsap';
 import '../css/Navigation.css';
 
-function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const Navigation = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  // Refs for animation targets
+  const containerRef = useRef(null);
+  const menuOverlayRef = useRef(null);
+  const menuLinksRef = useRef([]);
+  const line1Ref = useRef(null);
+  const line2Ref = useRef(null);
+
+  // Initialize GSAP timeline
+  const tl = useRef(gsap.timeline({ paused: true }));
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
+    // Define the Open/Close animation timeline
+    tl.current
+      .to(menuOverlayRef.current, {
+        duration: 0.8,
+        height: "100vh",
+        ease: "power3.inOut"
+      })
+      .from(menuLinksRef.current, {
+        y: 100,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.1,
+        ease: "power3.out"
+      }, "-=0.3"); // Overlap slightly with overlay animation
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
+  // Handle Menu Toggle
+  const toggleMenu = () => {
+    if (isMenuOpen) {
+      tl.current.reverse();
+      // Animate Hamburger back to lines
+      gsap.to(line1Ref.current, { rotation: 0, y: 0, duration: 0.3 });
+      gsap.to(line2Ref.current, { rotation: 0, y: 0, duration: 0.3 });
+    } else {
+      tl.current.play();
+      // Animate Hamburger to 'X'
+      gsap.to(line1Ref.current, { rotation: 45, y: 6, duration: 0.3 });
+      gsap.to(line2Ref.current, { rotation: -45, y: -6, duration: 0.3 });
+    }
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  // Links Data
+  const links = [
+    { label: "Home", path: "#" },
+    { label: "Work", path: "#selected-works" },
+    { label: "Services", path: "#services" },
+    { label: "About", path: "#about" },
+    { label: "Contact", path: "#contact" },
+  ];
+
+  const addToRefs = (el) => {
+    if (el && !menuLinksRef.current.includes(el)) {
+      menuLinksRef.current.push(el);
     }
   };
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
   return (
-    <>
-      <nav className={`navigation ${isScrolled ? 'scrolled' : ''}`}>
-        <div className="nav-container">
-          <button onClick={() => scrollToSection('hero')} className="nav-logo">
-            Jayaram
-          </button>
-
-          <div className="nav-links desktop-only">
-            <button onClick={() => scrollToSection('about')}>About</button>
-            <button onClick={() => scrollToSection('skills')}>Skills</button>
-            <button onClick={() => scrollToSection('projects')}>Projects</button>
-            <button onClick={() => scrollToSection('services')}>Services</button>
-            <button onClick={() => scrollToSection('contact')}>Contact</button>
-          </div>
-
-          <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
-            <span className={`burger ${isMobileMenuOpen ? 'open' : ''}`}></span>
-          </button>
-        </div>
-      </nav>
-
-      <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
-        <button className="close-menu" onClick={toggleMobileMenu}>×</button>
-        <div className="mobile-nav-links">
-          <button onClick={() => scrollToSection('about')}>About</button>
-          <button onClick={() => scrollToSection('skills')}>Skills</button>
-          <button onClick={() => scrollToSection('projects')}>Projects</button>
-          <button onClick={() => scrollToSection('services')}>Services</button>
-          <button onClick={() => scrollToSection('contact')}>Contact</button>
+    <div className="nav-container" ref={containerRef}>
+      {/* Top Bar */}
+      <div className="nav-header">
+        <div className="nav-logo">JAYARAM</div>
+        
+        {/* Hamburger Button */}
+        <div className="menu-btn" onClick={toggleMenu}>
+          <div ref={line1Ref} className="menu-line"></div>
+          <div ref={line2Ref} className="menu-line"></div>
         </div>
       </div>
-    </>
+
+      {/* Full Screen Overlay Menu */}
+      <div className="menu-overlay" ref={menuOverlayRef}>
+        <div className="menu-content">
+          <ul className="menu-list">
+            {links.map((link, index) => (
+              <li key={index} className="menu-item-wrapper">
+                <a 
+                  href={link.path} 
+                  className="menu-link" 
+                  ref={addToRefs}
+                  onClick={toggleMenu} // Close menu on click
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          
+          <div className="menu-footer">
+            <span>Chennai, India</span>
+            <span>opentowork@gmail.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
   );
-}
+};
 
 export default Navigation;

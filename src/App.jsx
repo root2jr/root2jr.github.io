@@ -1,22 +1,21 @@
-import Navigation from './components/Navigation';
 import Hero from './components/Hero';
-import About from './components/About';
+import Navigation from './components/Navigation';
+
+import './App.css';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
-import Services from './components/Services';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import './App.css';
+import About from './components/About';
 
 function App() {
   return (
     <div className="app">
       <Navigation />
       <Hero />
-      <About />
       <Skills />
       <Projects />
-      <Services />
+      <About />
       <Contact />
       <Footer />
     </div>

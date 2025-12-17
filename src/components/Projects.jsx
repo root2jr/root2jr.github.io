@@ -1,141 +1,197 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../css/Projects.css';
 
+// Register ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
-function Projects() {
+// Dummy Project Data (Replace with your real project info & images)
+const projectsData = [
+  {
+    id: 1,
+    title: "JARVIS – Personal AI Assistant",
+    description:
+      "A full-stack personal AI assistant with secure authentication, persistent memory, reminders, automated notifications, and role-based access. Built for actual daily use.",
+    tech: [
+      "React",
+      "React Native",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "JWT",
+      "FastAPI",
+      "Python",
+      "Gemini API",
+      "Machine Learning",
+      "git"
+
+    ],
+    image: "https://placehold.co/800x600/1a1a1a/FFFFFF/png?text=JARVIS+AI+Assistant",
+    liveLink: "https://j-a-r-v-i-s-ai.netlify.app",
+    codeLink: "https://github.com/root2jr/jarvis-ai"
+  },
+  {
+    id: 2,
+    title: "Real-Time Chat & Collaboration Platform",
+    description:
+      "A scalable real-time chat system with group management, assignments, join requests, WebSocket-based messaging, and WebRTC-powered audio calls.",
+    tech: [
+      "React",
+      "React Native",
+      "TypeScript",
+      "WebSockets",
+      "WebRTC",
+      "FastAPI",
+      "MongoDB",
+      "git"
+
+    ],
+    image: "https://placehold.co/800x600/1a1a1a/FFFFFF/png?text=Real-Time+Chat+App",
+    liveLink: "https://thumbsup07.netlify.app",
+    codeLink: "https://github.com/DEVLABS07/devchat"
+  },
+  {
+    id: 3,
+    title: "Aptitude Test & Student Analytics System",
+    description:
+      "A role-based platform for conducting online aptitude tests with automatic evaluation, real-time student analytics, and isolated interfaces for students, staff, and admins.",
+    tech: [
+      "React",
+      "Node.js",
+      "Python",
+      "FastAPI",
+      "MongoDB",
+      "JWT",
+      "git"
+
+    ],
+    image: "https://placehold.co/800x600/1a1a1a/FFFFFF/png?text=Aptitude+Test+System",
+    liveLink: "https://aptitude-test-biher.netlify.app",
+    codeLink: "https://github.com/root2jr/Aptitude-Test-BIHER"
+  },
+  {
+    id: 4,
+    title: "LiteraSocial – Social Media Platform with AI Chat",
+    description:
+      "A social media application for sharing free-form literature and social thoughts, featuring engagement-based feed ranking and an integrated AI chatbot.",
+    tech: [
+      "React Native",
+      "TypeScript",
+      "Node.js",
+      "MongoDB",
+      "JWT",
+      "AI Integration",
+      "git"
+
+    ],
+    image: "https://placehold.co/800x600/1a1a1a/FFFFFF/png?text=LiteraSocial",
+    liveLink: "#",
+    codeLink: "https://github.com/DEVLABS07/LiteraSocial"
+  },
+  {
+    id: 5,
+    title: "Jr-v1 Interpreter",
+    description:
+      "A minimal custom language interpreter implementing lexical analysis, parsing, and execution for a small instruction set. Built to understand how interpreters work end-to-end.",
+    tech: [
+      "C++",
+      "Python",
+      "Lexing",
+      "Parsing",
+      "git"
+    ],
+    image: "https://placehold.co/800x600/1a1a1a/FFFFFF/png?text=Jr-v1+Interpreter",
+    liveLink: "#",
+    codeLink: "https://github.com/root2jr/Jr-v1-Interpreter"
+  }
+];
+
+
+const Projects = () => {
   const sectionRef = useRef(null);
-  const titleRef = useRef(null);
-  const projectsRef = useRef(null);
-
-  const projects = [
-    {
-      title: 'Jarvis AI Assistant',
-      category: 'AI / Voice Recognition / Full-Stack',
-      description:
-        'An AI-powered voice assistant inspired by Iron Man\'s Jarvis. Features natural language processing, voice commands, and smart automation.',
-      tech: ['Python', 'Gemini API', 'Speech Recognition', 'Text-To-Speech', 'React.js', 'Express.js', 'MongoDB', 'Machine Learning', 'Node.js', 'JWT Authentication','Git'],
-    },
-    {
-      title: 'Real-Time Chat Application',
-      category: 'Full-Stack Web App',
-      description:
-        'A modern chat platform with real-time messaging, user authentication, and responsive design for seamless communication.',
-      tech: ['React', 'Node.js', 'Web Socket', 'MongoDB', 'Python', 'FastAPI', 'JWT Authentication','Git'],
-    },
-    {
-      title: 'Aptitute Test - BIHER',
-      category: 'Full-Stack Exam Management System',
-      description:
-        'A streamlined aptitude-test platform built for my college, featuring timed quizzes, automatic scoring, question randomization, and real-time result visibility. It also includes a dedicated staff dashboard for managing questions, monitoring tests, and reviewing results making it a complete end-to-end assessment system',
-      tech: ['React', 'Node.Js', 'Python', 'FastAPI', 'Git'],
-    },
-    {
-      title: 'Jr-V1 Interpreter',
-      category: 'Programming Language',
-      description: 'A lightweight interpreter that processes a custom mini-language using manual tokenization and a direct evaluation flow. It parses expressions, handles operators, maintains variables, and executes commands. Built to understand the low-level mechanics of how languages read, process, and run instructions focusing on clean parsing logic, error handling, and execution accuracy.',
-      tech: ['C', 'Systems Programming', 'Git'],
-    },
-    {
-      title: 'Jarvis AI Assistant (Android)',
-      category: 'AI / Full-Stack / Mobile',
-      description:
-        'A personal AI assistant built as a dedicated Android app with real-time memory, authentication, reminders, automated notifications, and lightweight conversational intelligence. Focused on fast local performance, clean UI, and a fully custom backend.',
-      tech: [
-        'React Native',
-        'Node.js',
-        'Express.js',
-        'MongoDB',
-        'Python',
-        'Machine Learning',
-        'Gemini API',
-        'Notifications API',
-        'Secure Auth (JWT)',
-        'Git'
-      ],
-    }, {
-      title: 'Social Media App',
-      category: 'Full-Stack / Mobile / Social Platform',
-      description:
-        'A cross-platform social media app built with React Native, featuring post creation, literature sharing, a ranked feed system, secure JWT authentication, real-time interactions, and an integrated AI chatbot. Designed with a clean architecture, optimized FlatList rendering, and a custom Node.js + MongoDB backend.',
-      tech: [
-        'React Native',
-        'Node.js',
-        'Express.js',
-        'MongoDB',
-        'JWT Auth',
-        'AI Chatbot Engine',
-        'React Query',
-        'Git'
-      ],
-    }
-
-
-  ];
+  const headerRef = useRef(null);
+  const projectRefs = useRef([]);
 
   useEffect(() => {
-    const section = sectionRef.current;
-
-    gsap.fromTo(
-      titleRef.current,
-      { opacity: 0, y: 50 },
+    // 1. Animate Section Header
+    gsap.fromTo(headerRef.current,
+      { y: 50, opacity: 0 },
       {
-        opacity: 1,
         y: 0,
+        opacity: 1,
         duration: 1,
-        ease: 'power3.out',
+        ease: "power3.out",
         scrollTrigger: {
-          trigger: section,
-          start: 'top 80%',
-        },
+          trigger: headerRef.current,
+          start: "top 80%",
+        }
       }
     );
 
-    const projectItems = projectsRef.current.querySelectorAll('.project-item');
-    projectItems.forEach((item, index) => {
-      gsap.fromTo(
-        item,
-        { opacity: 0, y: 60 },
+    // 2. Staggered Project Items Reveal
+    projectRefs.current.forEach((el, index) => {
+      gsap.fromTo(el,
+        { y: 100, opacity: 0 },
         {
-          opacity: 1,
           y: 0,
+          opacity: 1,
           duration: 1,
-          ease: 'power3.out',
+          ease: "power4.out",
           scrollTrigger: {
-            trigger: item,
-            start: 'top 85%',
-          },
+            trigger: el,
+            start: "top 85%", // Triggers as the item enters the view
+            toggleActions: "play none none reverse" // Optional: reverses on scroll up
+          }
         }
       );
     });
   }, []);
 
-  return (
-    <section className="projects" id="projects" ref={sectionRef}>
-      <div className="projects-container">
-        <h2 ref={titleRef} className="section-title">
-          Selected Works
-        </h2>
+  const addToRefs = (el) => {
+    if (el && !projectRefs.current.includes(el)) {
+      projectRefs.current.push(el);
+    }
+  };
 
-        <div className="projects-list" ref={projectsRef}>
-          {projects.map((project, index) => (
-            <div key={index} className="project-item">
-              <div className="project-header">
-                <span className="project-number">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <span className="project-category">{project.category}</span>
-              </div>
-              <h3 className="project-title">{project.title}</h3>
-              <p className="project-description">{project.description}</p>
-              <div className="project-tech">
-                {project.tech.map((tech, i) => (
-                  <span key={i} className="tech-tag">
-                    {tech}
-                  </span>
-                ))}
+  return (
+    <section className="projects-section" id="selected-works" ref={sectionRef}>
+      <div className="projects-container">
+        {/* Header */}
+        <div className="projects-header" ref={headerRef}>
+          <h2 className="section-title-2 outline-text">Selected Works</h2>
+        </div>
+
+        {/* Project Grid */}
+        <div className="projects-grid">
+          {projectsData.map((project) => (
+            <div className="project-card" key={project.id} ref={addToRefs}>
+
+              {/* Image Container with Hover Effect */}
+              <a href={project.liveLink} className="project-image-container">
+                <div className="img-overlay"></div>
+                <img src={project.image} alt={project.title} className="project-img" />
+                <span className="view-project-btn">View Project</span>
+              </a>
+
+              {/* Project Content */}
+              <div className="project-content">
+                <div className="project-top-row">
+                  <h3 className="project-title">{project.title}</h3>
+                  {/* Links available on hover/desktop usually, kept simple here */}
+                  <div className="project-links">
+                    <a href={project.codeLink} target="_blank" rel="noreferrer" className="icon-link">Code <span className="arrow-diag">↗</span></a>
+                  </div>
+                </div>
+
+                <p className="project-description">{project.description}</p>
+
+                {/* Tech Tags */}
+                <div className="tech-stack">
+                  {project.tech.map((techItem, index) => (
+                    <span key={index} className="tech-tag">{techItem}</span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
@@ -143,6 +199,6 @@ function Projects() {
       </div>
     </section>
   );
-}
+};
 
 export default Projects;
