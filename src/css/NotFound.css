@@ -13,6 +13,7 @@
   background-color: var(--nf-bg);
   color: var(--nf-text);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: 'Inter', sans-serif;

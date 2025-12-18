@@ -121,12 +121,14 @@
   }
   .menu-list{
     padding-top: 50px;
+    padding-bottom: 20px;
   }
   .menu-link{
     font-size: 50px;
   }
   .menu-content {
-    padding: 20px;
+    padding: 10px;
+    max-height:80vh ;
     justify-content: center; /* Center vertically on mobile */
   }
 
@@ -134,5 +136,6 @@
     flex-direction: column;
     gap: 10px;
     font-size: 0.8rem;
+    align-items: center;
   }
 }

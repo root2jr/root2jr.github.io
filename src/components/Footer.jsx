@@ -1,6 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../css/Footer.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
   const marqueeRef = useRef(null);
@@ -8,43 +11,68 @@ const Footer = () => {
   const date = new Date();
 
   useEffect(() => {
-    // 1. Infinite Marquee Animation
-    // We clone the text to create a seamless loop
-    const marqueeText = marqueeRef.current.querySelector('.marquee-inner');
-    const clone = marqueeText.cloneNode(true);
-    marqueeRef.current.appendChild(clone);
+    // 1. Infinite Marquee Setup
+    const track = marqueeRef.current;
+    const marqueeInner = track.querySelector('.marquee-inner');
+    
+    // Clone for seamless loop
+    const clone = marqueeInner.cloneNode(true);
+    track.appendChild(clone);
 
-    gsap.to(marqueeRef.current.children, {
+    // Constant infinite movement
+    const marqueeAnim = gsap.to(track.children, {
       xPercent: -100,
       repeat: -1,
-      duration: 20, // Adjust speed here
-      ease: "linear"
+      duration: 20,
+      ease: "none"
     });
 
-    // 2. Footer Content Reveal on Scroll
-    // Simple fade in as it comes into view
+    // 2. Marquee Velocity Scrub (Speed up on scroll)
+    ScrollTrigger.create({
+      trigger: "body",
+      start: "top top",
+      end: "bottom bottom",
+      onUpdate: (self) => {
+        // Increases the timeScale of the animation based on scroll velocity
+        // The faster you scroll, the faster the marquee spins
+        let velocity = Math.abs(self.getVelocity() / 1000);
+        gsap.to(marqueeAnim, { timeScale: 1 + velocity, duration: 0.5 });
+      }
+    });
+
+    // 3. Footer Content Scrub Reveal
     gsap.fromTo(footerContentRef.current,
-      { y: 50, opacity: 0 },
+      { 
+        y: 100, 
+        opacity: 0,
+        scale: 0.95 
+      },
       {
         y: 0,
         opacity: 1,
-        duration: 1,
-        ease: "power3.out",
+        scale: 1,
+        ease: "none",
         scrollTrigger: {
           trigger: footerContentRef.current,
-          start: "top 95%",
+          start: "top 100%", // Starts exactly when the footer enters
+          end: "bottom 100%", // Finished when footer is fully shown
+          scrub: 1,
         }
       }
     );
+
+    return () => {
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    };
   }, []);
 
   return (
-    <footer className="footer-section">
+    <footer className="footer-section" style={{ overflow: 'hidden' }}>
       {/* Infinite Scrolling Marquee */}
-      <div className="marquee-container">
-        <div className="track" ref={marqueeRef}>
-          <div className="marquee-inner">
-             OPEN FOR WORK — MERN STACK — REACT NATIVE — AI INTEGRATION — 
+      <div className="marquee-container" style={{ whiteSpace: 'nowrap', display: 'flex' }}>
+        <div className="track" ref={marqueeRef} style={{ display: 'flex' }}>
+          <div className="marquee-inner" style={{ paddingRight: '50px' }}>
+              OPEN FOR WORK — MERN STACK — REACT NATIVE — AI INTEGRATION — 
           </div>
         </div>
       </div>
@@ -52,7 +80,6 @@ const Footer = () => {
       <div className="footer-container" ref={footerContentRef}>
         <div className="footer-top">
           
-          {/* Brand Column */}
           <div className="footer-brand">
             <h2 className="footer-logo">Jayaram</h2>
             <p className="footer-tagline">
@@ -60,7 +87,6 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Navigation Links */}
           <div className="footer-links">
             <h3 className="footer-heading">Sitemap</h3>
             <ul>
@@ -71,12 +97,11 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Social Links */}
           <div className="footer-links">
             <h3 className="footer-heading">Socials</h3>
             <ul>
-              <li><a href="https://www.linkedin.com/in/jayaraman-pv/" target="_blank" rel="noreferrer">LinkedIn</a></li>
-              <li><a href="https://www.github.com/root2jr" target="_blank" rel="noreferrer">GitHub</a></li>
+              <li><a href="https://linkedin.com/in/jayaraman-pv/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+              <li><a href="https://github.com/root2jr" target="_blank" rel="noreferrer">GitHub</a></li>
               <li><a href="https://instagram.com/itz_jram18" target="_blank" rel="noreferrer">Instagram</a></li>
             </ul>
           </div>

@@ -82,9 +82,8 @@ const Navigation = () => {
 
   return (
     <div className="nav-container">
-      {/* Header */}
       <div className="nav-header">
-        <div className="nav-logo">JAYARAM</div>
+        <a href='#' style={{textDecoration:"none"}} className="nav-logo">JAYARAM</a>
 
         <div className="menu-btn" onClick={toggleMenu}>
           <div ref={line1Ref} className="menu-line" />

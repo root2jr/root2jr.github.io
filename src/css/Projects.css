@@ -136,6 +136,20 @@
   transform: translate(-50%, -50%) scale(1);
 }
 
+.project-image-wrapper {
+  position: relative;
+  overflow: hidden; /* Important for the scale animation */
+  display: block;
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  will-change: transform; /* Boosts performance for mobile scrubbing */
+}
+
 /* --- Content Area --- */
 .project-content {
   display: flex;
