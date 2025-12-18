@@ -21,7 +21,7 @@ const projectsData = [
       "Python",
       "Gemini API",
       "Machine Learning",
-      "git"
+      "Git"
 
     ],
     image: "https://placehold.co/800x600/1a1a1a/FFFFFF/png?text=JARVIS+AI",
@@ -34,8 +34,8 @@ const projectsData = [
       "A full-stack EdTech platform that transforms video-based learning into structured, interactive lessons using AI. Teachers can create classes, assign lessons via YouTube videos, and track student performance, while students receive AI-generated summaries, quizzes, and progress analytics. The system automates transcription, content understanding, assessment generation, and performance analysis through a scalable backend architecture.",
     tech: [
       "React",
-      "React Native",
       "FastAPI",
+      "Machine Learning",
       "Python",
       "MongoDB",
       "JWT Authentication",
@@ -55,13 +55,12 @@ const projectsData = [
     description:"A scalable real-time chat and collaboration platform built for team communication and academic coordination, supporting group management, join requests, and assignment workflows. Users can exchange messages instantly via WebSockets, manage groups and tasks, and initiate peer-to-peer audio calls using WebRTC, all backed by a secure, event-driven architecture and a responsive cross-platform interface.",
     tech: [
       "React",
-      "React Native",
       "TypeScript",
       "WebSockets",
       "WebRTC",
       "FastAPI",
       "MongoDB",
-      "git"
+      "Git"
 
     ],
     image: "https://placehold.co/800x600/1a1a1a/FFFFFF/png?text=Real-Time+Chat+App",
@@ -79,7 +78,7 @@ const projectsData = [
       "FastAPI",
       "MongoDB",
       "JWT",
-      "git"
+      "Git"
 
     ],
     image: "https://placehold.co/800x600/1a1a1a/FFFFFF/png?text=Aptitude+Test+System",
@@ -95,9 +94,10 @@ const projectsData = [
       "TypeScript",
       "Node.js",
       "MongoDB",
+      "Machine Learning",
       "JWT",
       "AI Integration",
-      "git"
+      "Git"
 
     ],
     image: "https://placehold.co/800x600/1a1a1a/FFFFFF/png?text=LiteraSocial",
@@ -113,7 +113,7 @@ const projectsData = [
       "Python",
       "Lexing",
       "Parsing",
-      "git"
+      "Git"
     ],
     image: "https://placehold.co/800x600/1a1a1a/FFFFFF/png?text=Jr-v1+Interpreter",
     liveLink: "#",
