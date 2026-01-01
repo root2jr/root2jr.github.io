@@ -14,7 +14,7 @@ const Footer = () => {
     // 1. Infinite Marquee Setup
     const track = marqueeRef.current;
     const marqueeInner = track.querySelector('.marquee-inner');
-    
+
     // Clone for seamless loop
     const clone = marqueeInner.cloneNode(true);
     track.appendChild(clone);
@@ -27,25 +27,15 @@ const Footer = () => {
       ease: "none"
     });
 
-    // 2. Marquee Velocity Scrub (Speed up on scroll)
-    ScrollTrigger.create({
-      trigger: "body",
-      start: "top top",
-      end: "bottom bottom",
-      onUpdate: (self) => {
-        // Increases the timeScale of the animation based on scroll velocity
-        // The faster you scroll, the faster the marquee spins
-        let velocity = Math.abs(self.getVelocity() / 1000);
-        gsap.to(marqueeAnim, { timeScale: 1 + velocity, duration: 0.5 });
-      }
-    });
+    gsap.to(marqueeAnim, { timeScale: 1, duration: 0.5 });
+
 
     // 3. Footer Content Scrub Reveal
     gsap.fromTo(footerContentRef.current,
-      { 
-        y: 100, 
+      {
+        y: 100,
         opacity: 0,
-        scale: 0.95 
+        scale: 0.95
       },
       {
         y: 0,
@@ -72,14 +62,14 @@ const Footer = () => {
       <div className="marquee-container" style={{ whiteSpace: 'nowrap', display: 'flex' }}>
         <div className="track" ref={marqueeRef} style={{ display: 'flex' }}>
           <div className="marquee-inner" style={{ paddingRight: '50px' }}>
-              OPEN FOR WORK — MERN STACK — REACT NATIVE — AI INTEGRATION — 
+            OPEN FOR WORK — MERN STACK — REACT NATIVE — AI INTEGRATION —
           </div>
         </div>
       </div>
 
       <div className="footer-container" ref={footerContentRef}>
         <div className="footer-top">
-          
+
           <div className="footer-brand">
             <h2 className="footer-logo">Jayaram</h2>
             <p className="footer-tagline">

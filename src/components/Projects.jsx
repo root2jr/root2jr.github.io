@@ -92,7 +92,6 @@ const projectsData = [
     ],
     image: "https://placehold.co/800x600/1a1a1a/FFFFFF/png?text=Aptitude+Test+System",
     liveLink: "https://aptitude-test-biher.netlify.app",
-    codeLink: "https://github.com/root2jr/Aptitude-Test-BIHER",
     src: "aptitudetest"
   },
   {
@@ -220,19 +219,19 @@ const Projects = () => {
               <Link to={`/project/${project.src}`} className="project-image-wrapper" >
                 <div className="img-overlay"></div>
                 {/* Make sure overflow is hidden on project-image-wrapper in CSS */}
-                <img style={{ objectFit: project.image == img5 ? "scale-down" : "cover" }} src={project.image} loading="lazy" alt={project.title} className="project-img" />
-                <Link className="view-project-btn" style={{width:"fit-content", textDecoration:"none"}}>View Case Study</Link>
+                <img style={{ objectFit: "scale-down" }} src={project.image} loading="lazy" alt={project.title} className="project-img" />
+                <div className="view-project-btn" style={{width:"fit-content", textDecoration:"none"}}>View Case Study</div>
               </Link>
 
               <div className="project-content">
                 <div className="project-top">
                   <h3 className="project-title">{project.title}</h3>
-                  <a href={project.codeLink} target="_blank" rel="noreferrer" className="code-btn">
+                 { project.title == "Aptitude Test & Student Analytics System"?null:<a href={project.codeLink} target="_blank" rel="noreferrer" className="code-btn">
                     <span>Code</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="arrow-icon">
                       <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                  </a>
+                  </a> }
                 </div>
                 <p className="project-description">{project.description}</p>
                 <div className="tech-stack">

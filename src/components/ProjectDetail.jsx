@@ -10,11 +10,10 @@ import { useParams } from 'react-router-dom';
 
 
 
-
 const projectDatas = [{
     title: "Jarvis AI Assistant",
     category: "Systems & Automation",
-    duration: "4 Months // 2025",
+    duration: "4 Months | 2025",
     techList: ["FastAPI", "Node.js", "React Native", "MongoDB", "TensorFlow"],
     image: img1,
 
@@ -59,7 +58,7 @@ const projectDatas = [{
 {
     title: "Real-Time Chat & Collaboration Platform",
     category: "Real-Time Systems",
-    duration: "3 Months // 2025",
+    duration: "3 Months | 2025",
     techList: ["React", "FastAPI", "MongoDB", "WebSockets", "WebRTC"],
     image: img2,
 
@@ -104,7 +103,7 @@ const projectDatas = [{
 {
     title: "LiteraSocial",
     category: "Social Platforms & AI Integration",
-    duration: "2.5 Months // 2025",
+    duration: "2.5 Months | 2025",
     techList: ["React Native", "Node.js", "MongoDB", "JWT", "AI Chat Systems"],
     image: img3,
 
@@ -149,7 +148,7 @@ const projectDatas = [{
 {
     title: "EdTech AI Learning Platform",
     category: "AI Systems & Education Technology",
-    duration: "3 Months // 2025",
+    duration: "3 Months | 2025",
     techList: ["FastAPI", "Node.js", "React", "MongoDB", "Python", "NLP"],
     image: img5,
 
@@ -194,7 +193,7 @@ const projectDatas = [{
 {
     title: "Jr-V1 Custom Language Interpreter",
     category: "Systems Programming",
-    duration: "1.5 Months // 2024",
+    duration: "1.5 Months | 2024",
     techList: ["C", "Compiler Design", "Systems Programming"],
     image: img4,
 
@@ -239,7 +238,7 @@ const projectDatas = [{
 {
     title: "Aptitude Test & Assessment Platform",
     category: "Assessment Systems & Educational Platforms",
-    duration: "2 Months // 2025",
+    duration: "2 Months | 2025",
     techList: ["React", "Node.js", "Express.js", "MongoDB", "JWT"],
     image: "https://placehold.co/800x600/1a1a1a/FFFFFF/png?text=Aptitude+Test+System",
 
@@ -289,6 +288,10 @@ const ProjectDetail = ({ id }) => {
     const [project, setProject] = useState(projectDatas[0]);
     const containerRef = useRef(null);
     const loaderRef = useRef(null);
+    const date = new Date();
+    useEffect(() => {
+        scrollTo(0, 0);
+    }, [])
 
     useEffect(() => {
         console.log(params.id);
@@ -330,11 +333,13 @@ const ProjectDetail = ({ id }) => {
     return (
         <div ref={containerRef} className="editorial-wrapper">
             <div ref={loaderRef} className="gsap-loader" />
-
+            <div className="editorial-footer">
+                <a href="/" style={{ display: "flex", gap: 15 }}><p>←</p>  <p>Return to Portfolio</p></a>
+            </div>
             {/* Header Area */}
             <header className="editorial-header">
                 <h1 className="editorial-title">{project.title}</h1>
-                <p className="eyebrow">{project.category} // {project.duration}</p>
+                <p className="eyebrow">{project.category} | {project.duration}</p>
                 <div className="editorial-meta">
                     <div className="meta-item"><strong>Tech Stack</strong> {project.techList.join(", ")}</div>
                 </div>
@@ -386,16 +391,17 @@ const ProjectDetail = ({ id }) => {
                         <p>{project.resultsText}</p>
                     </div>
                 </div>
-                <div className="meta-buttons">
+                {project.title == "Aptitude Test & Assessment Platform" ? null : <div className="meta-buttons">
                     <div className="meta-item-editorial"><a href={project.github} target="_blank">Source Code ↗</a></div>
                     <div className="meta-item-editorial"><a href={project.liveLink} target="_blank">Live Site ↗</a></div>
-                </div>
+                </div>}
 
             </article>
 
-            <footer className="editorial-footer">
-                <a href="/">← Return to Portfolio</a>
-            </footer>
+            <div className="footer-bottom-2">
+                <span className="copyright">© {date.getFullYear()} Jayaram. All Rights Reserved.</span>
+                <span className="location">Made by Jayaram with React & GSAP</span>
+            </div>
         </div>
     );
 };
