@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../css/Hero.css';
+import myResume from '../assets/Jayaraman-P.V-Resume.pdf';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -93,9 +94,12 @@ const Hero = () => {
           Crafting MERN Stack, React Native, and AI/ML solutions.
         </p>
 
-        <div ref={btnRef}>
-          <a href='#contact' className="hero-cta">
-            Let's Work Together <span className="arrow">→</span>
+        <div ref={btnRef} className='hero-buttons'>
+          <a href='#selected-works' className="hero-cta">
+            View Projects <span className="arrow">→</span>
+          </a>
+          <a href={myResume} download={"Jayaraman-P.V-Resume.pdf"} className="hero-cta">
+            Download CV <span className="arrow">→</span>
           </a>
         </div>
       </div>

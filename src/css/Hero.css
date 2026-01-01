@@ -116,6 +116,15 @@
 .hero-cta:hover .arrow {
   transform: translateX(5px);
 }
+.hero-buttons{
+  display: flex;
+  gap: 20px;
+}
+.hero-buttons a:nth-child(2){
+  border:1px solid #ffffff;
+  color: #ffffff;
+  background-color: transparent;
+}
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
@@ -130,4 +139,8 @@
   .hero-cta {
     padding: 15px 30px;
   }
+  .hero-buttons{
+    flex-direction: column;
+  }
 }
+

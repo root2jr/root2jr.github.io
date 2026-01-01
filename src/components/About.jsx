@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../css/About.css';
+import myimg from '../assets/myimg.webp'
+import myresume from '../assets/Jayaraman-P.V-Resume.pdf'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -107,9 +109,9 @@ const About = () => {
             </div>
           </div>
 
-          <button className="download-cv-btn">
+          <a className="download-cv-btn" href={myresume} download="Jayaraman-P.V-Resume.pdf" style={{textDecoration:"none"}}>
             Download CV <span className="btn-icon">↓</span>
-          </button>
+          </a>
         </div>
 
         <div className="about-right" ref={rightColRef}>
@@ -127,10 +129,10 @@ const About = () => {
             ></div>
             <img
               ref={imgRef}
-              src="https://placehold.co/600x800/1a1a1a/FFF?text=MY+IMAGE"
+              src={myimg}
               alt="Profile"
               className="profile-image"
-              style={{ display: 'block', width: '100%', zIndex: 1 }}
+              style={{ display: 'block', width: '100%', zIndex: 1 , objectFit:"cover", height:"fit-content"}}
             />
           </div>
         </div>

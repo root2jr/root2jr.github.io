@@ -8,6 +8,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import About from './components/About';
 import NotFound from './components/NotFound';
+import ProjectDetail from './components/ProjectDetail';
 
 function Home() {
   return (
@@ -27,6 +28,7 @@ function App() {
    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/project/:id" element={<ProjectDetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

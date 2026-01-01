@@ -2,6 +2,12 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../css/Projects.css';
+import img1 from "../assets/02.webp";
+import img2 from "../assets/jarvis-cover.webp";
+import img3 from "../assets/jrv1.webp";
+import img4 from "../assets/thumbsup.webp";
+import img5 from "../assets/literasocial.webp";
+import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -9,7 +15,7 @@ const projectsData = [
   {
     id: 1,
     title: "JARVIS – Personal AI Assistant",
-    description:"A full-stack personal AI assistant designed to manage tasks, reminders, and contextual memory through a secure, scalable architecture. Users can authenticate, store long-term memories, schedule reminders, and receive automated notifications, while the system handles intent processing, memory retrieval, and real-time interactions via a robust backend and responsive cross-platform client.",
+    description: "A full-stack personal AI assistant designed to manage tasks, reminders, and contextual memory through a secure, scalable architecture. Users can authenticate, store long-term memories, schedule reminders, and receive automated notifications, while the system handles intent processing, memory retrieval, and real-time interactions via a robust backend and responsive cross-platform client.",
     tech: [
       "React",
       "React Native",
@@ -24,9 +30,10 @@ const projectsData = [
       "Git"
 
     ],
-    image: "https://placehold.co/800x600/1a1a1a/FFFFFF/png?text=JARVIS+AI",
+    image: img2,
     liveLink: "https://j-a-r-v-i-s-ai.netlify.app",
-    codeLink: "https://github.com/root2jr/jarvis-ai"
+    codeLink: "https://github.com/root2jr/jarvis-ai",
+    src: "jarvis"
   }, {
     id: 2,
     title: "AI-Powered EdTech Learning Platform",
@@ -44,15 +51,16 @@ const projectsData = [
       "REST APIs",
       "Async Backend"
     ],
-    image: "https://placehold.co/800x600/1a1a1a/FFFFFF/png?text=EdTech+AI",
+    image: img1,
     liveLink: "https://edtechx-ai.netlify.app",
-    codeLink: "https://github.com/root2jr/EdTech_AI"
+    codeLink: "https://github.com/root2jr/EdTech_AI",
+    src: "edtech-ai"
   }
   ,
   {
     id: 3,
     title: "Real-Time Chat & Collaboration Platform",
-    description:"A scalable real-time chat and collaboration platform built for team communication and academic coordination, supporting group management, join requests, and assignment workflows. Users can exchange messages instantly via WebSockets, manage groups and tasks, and initiate peer-to-peer audio calls using WebRTC, all backed by a secure, event-driven architecture and a responsive cross-platform interface.",
+    description: "A scalable real-time chat and collaboration platform built for team communication and academic coordination, supporting group management, join requests, and assignment workflows. Users can exchange messages instantly via WebSockets, manage groups and tasks, and initiate peer-to-peer audio calls using WebRTC, all backed by a secure, event-driven architecture and a responsive cross-platform interface.",
     tech: [
       "React",
       "TypeScript",
@@ -63,14 +71,15 @@ const projectsData = [
       "Git"
 
     ],
-    image: "https://placehold.co/800x600/1a1a1a/FFFFFF/png?text=Real-Time+Chat+App",
+    image: img4,
     liveLink: "https://thumbsup07.netlify.app",
-    codeLink: "https://github.com/DEVLABS07/devchat"
+    codeLink: "https://github.com/DEVLABS07/devchat",
+    src: "thumbsup"
   },
   {
     id: 4,
     title: "Aptitude Test & Student Analytics System",
-    description:"A full-stack aptitude testing platform built for academic evaluation, enabling administrators to create and manage timed tests while students attempt structured question sets with real-time validation. The system supports authentication, automated scoring, result storage, and performance analysis, ensuring fair assessment, scalable test delivery, and streamlined evaluation through a secure backend and intuitive user interface.",
+    description: "A full-stack aptitude testing platform built for academic evaluation, enabling administrators to create and manage timed tests while students attempt structured question sets with real-time validation. The system supports authentication, automated scoring, result storage, and performance analysis, ensuring fair assessment, scalable test delivery, and streamlined evaluation through a secure backend and intuitive user interface.",
     tech: [
       "React",
       "Node.js",
@@ -83,12 +92,13 @@ const projectsData = [
     ],
     image: "https://placehold.co/800x600/1a1a1a/FFFFFF/png?text=Aptitude+Test+System",
     liveLink: "https://aptitude-test-biher.netlify.app",
-    codeLink: "https://github.com/root2jr/Aptitude-Test-BIHER"
+    codeLink: "https://github.com/root2jr/Aptitude-Test-BIHER",
+    src: "aptitudetest"
   },
   {
     id: 5,
     title: "LiteraSocial – Social Media Platform with AI Chat",
-    description:"A full-stack social media platform focused on expressive writing and thoughtful interaction, enabling users to publish literature, social reflections, and long-form posts in a structured feed. The system supports secure authentication, engagement-based ranking, and an integrated AI chatbot, delivering personalized content discovery and interactive experiences through a scalable backend and modern cross-platform client.",
+    description: "A full-stack social media platform focused on expressive writing and thoughtful interaction, enabling users to publish literature, social reflections, and long-form posts in a structured feed. The system supports secure authentication, engagement-based ranking, and an integrated AI chatbot, delivering personalized content discovery and interactive experiences through a scalable backend and modern cross-platform client.",
     tech: [
       "React Native",
       "TypeScript",
@@ -100,14 +110,15 @@ const projectsData = [
       "Git"
 
     ],
-    image: "https://placehold.co/800x600/1a1a1a/FFFFFF/png?text=LiteraSocial",
+    image: img5,
     liveLink: "#",
-    codeLink: "https://github.com/DEVLABS07/LiteraSocial"
+    codeLink: "https://github.com/DEVLABS07/LiteraSocial",
+    src: "literasocial"
   },
   {
     id: 6,
     title: "Jr-v1 Interpreter",
-    description:"A lightweight custom interpreter implemented in C that processes and executes a minimal, structured programming language from source input. The system handles lexical analysis, parsing, and runtime execution through a compact execution pipeline, demonstrating low-level control, efficient memory handling, and core compiler design principles.",
+    description: "A lightweight custom interpreter implemented in C that processes and executes a minimal, structured programming language from source input. The system handles lexical analysis, parsing, and runtime execution through a compact execution pipeline, demonstrating low-level control, efficient memory handling, and core compiler design principles.",
     tech: [
       "C++",
       "Python",
@@ -115,9 +126,10 @@ const projectsData = [
       "Parsing",
       "Git"
     ],
-    image: "https://placehold.co/800x600/1a1a1a/FFFFFF/png?text=Jr-v1+Interpreter",
+    image: img3,
     liveLink: "#",
-    codeLink: "https://github.com/root2jr/Jr-v1-Interpreter"
+    codeLink: "https://github.com/root2jr/Jr-v1-Interpreter",
+    src: "jrv1-interpreter"
   }
 ];
 
@@ -205,12 +217,12 @@ const Projects = () => {
         <div className="projects-grid">
           {projectsData.map((project) => (
             <div className="project-card" key={project.id} ref={addToRefs}>
-              <a href={project.liveLink} className="project-image-wrapper" target="_blank" rel="noreferrer">
+              <Link to={`/project/${project.src}`} className="project-image-wrapper" >
                 <div className="img-overlay"></div>
                 {/* Make sure overflow is hidden on project-image-wrapper in CSS */}
-                <img src={project.image} alt={project.title} className="project-img" />
-                <div className="view-project-btn">Live App</div>
-              </a>
+                <img style={{ objectFit: project.image == img5 ? "scale-down" : "cover" }} src={project.image} loading="lazy" alt={project.title} className="project-img" />
+                <Link className="view-project-btn" style={{width:"fit-content", textDecoration:"none"}}>View Case Study</Link>
+              </Link>
 
               <div className="project-content">
                 <div className="project-top">

@@ -109,7 +109,7 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <span className="copyright">© {date.getFullYear()} Jayaram. All Rights Reserved.</span>
-          <span className="location">Made with React & GSAP</span>
+          <span className="location">Made by Jayaram with React & GSAP</span>
         </div>
       </div>
     </footer>
