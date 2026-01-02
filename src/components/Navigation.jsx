@@ -14,8 +14,8 @@ const Navigation = () => {
   // Links
   const links = [
     { label: 'Home', path: '#' },
-    { label: 'Work', path: '#selected-works' },
-    { label: 'Services', path: '#services' },
+    { label: 'Skills', path: '#services' },
+    { label: 'Works', path: '#selected-works' },
     { label: 'About', path: '#about' },
     { label: 'Contact', path: '#contact' },
   ];
@@ -83,7 +83,7 @@ const Navigation = () => {
   return (
     <div className="nav-container">
       <div className="nav-header">
-        <a href='#' style={{textDecoration:"none"}} className="nav-logo">JAYARAM</a>
+        <a href='#' style={{ textDecoration: "none" }} className="nav-logo">JAYARAM</a>
 
         <div className="menu-btn" onClick={toggleMenu}>
           <div ref={line1Ref} className="menu-line" />

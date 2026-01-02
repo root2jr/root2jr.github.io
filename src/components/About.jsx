@@ -78,11 +78,11 @@ const About = () => {
           <h5 className="mini-label">Who I Am</h5>
           <h2 className="about-headline">
             Student by day.<br />
-            <span className="highlight-text">Full Stack Dev</span> by night.
+            <span className="highlight-text">Software Dev</span> by night.
           </h2>
           <div className="about-body">
             <p>
-              I’m an 18-year-old Computer Science undergraduate based in Chennai with a strong focus on full-stack development.
+              I’m an 18-year-old Computer Science undergraduate based in Chennai with a strong focus on Software development.
             </p>
             <p>
               I build production-level web and mobile applications using React, React Native, Node.js, Express, MongoDB, and TypeScript, with experience in real-time systems, authentication, and scalable backend design.
@@ -101,7 +101,7 @@ const About = () => {
             </div>
             <div className="stat-item">
               <span className="stat-label">Education</span>
-              <span className="stat-value">B.Sc CS {year > 2027 ? "(2027)" : `(${2027 - year}${(2027 - year) === 2 ? "nd" : "rd"} yr)`}</span>
+              <span className="stat-value">B.Sc CS {year > 2028 ? "(2027)" : `(${(2028 - year) === 2 ? "2nd" : "3rd"} yr)`}</span>
             </div>
             <div className="stat-item">
               <span className="stat-label">Focus</span>

@@ -13,7 +13,6 @@ const Hero = () => {
   const btnRef = useRef(null);
 
   useEffect(() => {
-    // --- 1. ENTRY ANIMATION (Plays once on load) ---
     const entryTl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
     gsap.set([titleRef.current, subtitleRef.current, btnRef.current], {

@@ -96,7 +96,7 @@ const Contact = () => {
         <div className="contact-content" ref={contentRef}>
           {/* Form Column */}
           <div className="contact-column form-column">
-            <p className="form-intro">Have a project in mind? Drop your details below.</p>
+            <p className="form-intro">Let's discuss how I can contribute to your team.</p>
             <form className="contact-form" onSubmit={handleSubmit}>
               <div className="form-group">
                 <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required className="form-input" />
@@ -105,7 +105,7 @@ const Contact = () => {
                 <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} required className="form-input" />
               </div>
               <div className="form-group">
-                <textarea name="message" placeholder="Tell me about your project..." rows="4" value={formData.message} onChange={handleChange} required className="form-input form-textarea"></textarea>
+                <textarea name="message" placeholder="Your Message..." rows="4" value={formData.message} onChange={handleChange} required className="form-input form-textarea"></textarea>
               </div>
               <button type="submit" className="submit-btn">
                 Send Message <span className="arrow-diag">↗</span>
