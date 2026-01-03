@@ -25,7 +25,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://root2jr-github-io.onrender.com/contact", formData);
+      await axios.post("https://metriq-oq49.onrender.com/contact", formData);
       setNotifihead("Message Sent!");
       setNotifiContent("Thanks for reaching out! I'll get back to you shortly.");
       setShowNotif(true);
