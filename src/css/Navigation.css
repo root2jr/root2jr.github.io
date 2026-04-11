@@ -25,6 +25,26 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+.menu-link {
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+  line-height: 0.9;
+  text-decoration: none;
+}
+
+.outline-link {
+  -webkit-text-stroke: 1px white;
+  color: transparent;
+}
+
+.menu-link:hover{
+  color:white;
+  transition:.5s ease;
+}
+
 .nav-logo {
   font-size: 1.2rem;
   font-weight: 800;
@@ -85,21 +105,7 @@
 }
 
 /* Giant Typography Links */
-.menu-link {
-  font-size: 60px;
-  font-weight: 900;
-  color: var(--nav-text);
-  text-decoration: none;
-  text-transform: uppercase;
-  line-height: 1;
-  transition: color 0.3s ease, padding-left 0.3s ease;
-  display: inline-block;
-}
 
-.menu-link:hover {
-  color: var(--nav-accent); /* Gray on hover */
-  padding-left: 20px; /* Shift effect */
-}
 
 /* Footer info inside menu */
 .menu-footer {

@@ -14,9 +14,9 @@ const Navigation = () => {
   // Links
   const links = [
     { label: 'Home', path: '#' },
-    { label: 'Skills', path: '#services' },
-    { label: 'Works', path: '#selected-works' },
     { label: 'About', path: '#about' },
+    { label: 'Experience', path: '#experience' },
+    { label: 'Works', path: '#selected-works' },
     { label: 'Contact', path: '#contact' },
   ];
 
@@ -99,7 +99,7 @@ const Navigation = () => {
               <li key={label}>
                 <a
                   href={path}
-                  className="menu-link"
+                  className="menu-link outline-link"
                   ref={addToRefs}
                   onClick={toggleMenu}
                 >
@@ -110,7 +110,7 @@ const Navigation = () => {
           </ul>
 
           <div className="menu-footer">
-            <span>Chennai, India</span>
+            <span>📌 Chennai, India</span>
             <span>dev.jram18@gmail.com</span>
           </div>
         </div>

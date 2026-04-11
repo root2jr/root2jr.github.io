@@ -16,7 +16,7 @@ const Contact = () => {
   const [NotifiContent, setNotifiContent] = useState("Thanks for reaching out! I'll get back to you shortly.");
   const [Notifihead, setNotifihead] = useState("Message Sent!");
 
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '', TermsandPrivacyPolicyAgreed: "yes" });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -125,7 +125,7 @@ const Contact = () => {
             </div>
             <div className="detail-group">
               <span className="detail-label">Location</span>
-              <span className="detail-text">Chennai, India (Remote Available)</span>
+              <span className="detail-text">Chennai, India</span>
             </div>
             <div className="detail-group">
               <span className="detail-label">Socials</span>

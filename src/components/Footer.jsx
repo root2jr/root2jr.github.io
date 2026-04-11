@@ -27,31 +27,42 @@ const Footer = () => {
       ease: "none"
     });
 
-    gsap.to(marqueeAnim, { timeScale: 1, duration: 0.5 });
-
+    // 2. Marquee Play/Pause on Scroll
+    // This ensures the marquee only runs when the footer is actually visible
+    ScrollTrigger.create({
+      trigger: ".footer-section",
+      start: "top bottom",
+      onEnter: () => marqueeAnim.play(),
+      onLeave: () => marqueeAnim.pause(),
+      onEnterBack: () => marqueeAnim.play(),
+      onLeaveBack: () => marqueeAnim.pause()
+    });
 
     // 3. Footer Content Scrub Reveal
+    // We use "top 105%" to give it a slight delay before showing up
+    // and "bottom bottom" to ensure it finishes exactly when the page ends
     gsap.fromTo(footerContentRef.current,
       {
-        y: 100,
+        y: 150, // Increased for a more dramatic reveal
         opacity: 0,
-        scale: 0.95
+        scale: 0.9
       },
       {
         y: 0,
         opacity: 1,
         scale: 1,
-        ease: "none",
+        ease: "power2.out", // Changed to power for smoother entrance
         scrollTrigger: {
-          trigger: footerContentRef.current,
-          start: "top 100%", // Starts exactly when the footer enters
-          end: "bottom 100%", // Finished when footer is fully shown
-          scrub: 1,
+          trigger: ".footer-section", // Triggering on the whole section
+          start: "top 95%", 
+          end: "bottom bottom", 
+          scrub: 1.5, // Slightly higher scrub for "heavy" smooth feeling
         }
       }
     );
 
     return () => {
+      // Clean up all triggers
       ScrollTrigger.getAll().forEach(t => t.kill());
     };
   }, []);
@@ -80,10 +91,9 @@ const Footer = () => {
           <div className="footer-links">
             <h3 className="footer-heading">Sitemap</h3>
             <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#services">Skills</a></li>
-              <li><a href="#selected-works">Works</a></li>
               <li><a href="#about">About</a></li>
+              <li><a href="#experience">Experience</a></li>
+              <li><a href="#selected-works">Projects</a></li>
             </ul>
           </div>
 

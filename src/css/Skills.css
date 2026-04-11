@@ -13,7 +13,8 @@
   padding: 100px 20px;
   font-family: 'Inter', sans-serif;
   position: relative;
-  z-index: 10; /* Ensures it sits cleanly on top of any fixed elements */
+  z-index: 10;
+  /* Ensures it sits cleanly on top of any fixed elements */
 }
 
 .skills-container {
@@ -26,7 +27,8 @@
 /* --- Header --- */
 .skills-header {
   margin-bottom: 80px;
-  border-bottom: 2px solid var(--light-text); /* Thick divider */
+  border-bottom: 2px solid var(--light-text);
+  /* Thick divider */
   padding-bottom: 40px;
 }
 
@@ -41,7 +43,7 @@
 
 .outline-text-2 {
   -webkit-text-stroke: 1px black;
-   color: transparent; 
+  color: transparent;
 }
 
 .section-desc {
@@ -54,7 +56,8 @@
 /* --- List Layout --- */
 .skills-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive Grid */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* Responsive Grid */
   gap: 40px;
 }
 
@@ -71,8 +74,7 @@
 /* Hover Effect: Lift and Shadow */
 .skill-item:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-  background-color: black;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
   border-color: var(--light-text);
 }
 
@@ -86,7 +88,8 @@
   color: var(--light-accent);
   display: block;
   margin-bottom: 15px;
-  font-family: monospace; /* Technical feel */
+  font-family: monospace;
+  /* Technical feel */
 }
 
 .skill-title {
@@ -95,23 +98,19 @@
   line-height: 1.1;
   letter-spacing: -0.5px;
 }
-.skill-item:hover .skill-title{
-  color: var(--light-bg);
-}
+
+
 
 .skill-description {
   font-size: 1rem;
   color: var(--light-accent);
   line-height: 1.6;
   margin-bottom: 30px;
-  flex-grow: 1; /* Pushes tags to bottom */
+  flex-grow: 1;
+  /* Pushes tags to bottom */
 }
-.skill-item:hover .skill-description{
-  color: var(--border-color);
-}
-.skill-item:hover .skill-number{
-  color: var(--border-color);
-}
+
+
 
 /* --- Tags (Pills) --- */
 .skill-tags {
@@ -121,19 +120,21 @@
 }
 
 .tag {
-  padding: 8px 16px;
-  border: 1px solid var(--border-color);
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  border-radius: 50px; /* Pill shape */
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 0.75rem;
+  color: black;
+  background: rgba(0, 0, 0, 0.05);
+  /* Slight fill */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 6px 14px;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
+  transition: all 0.3s ease;
 }
 
 .skill-item:hover .tag {
-  background-color: var(--light-text);
-  color: var(--light-bg);
-  border-color: var(--light-bg);
+  background: rgba(0, 0, 0, 0.15);
+  border-color: rgba(0, 0, 0, 0.4);
+  color: black;
 }
 
 /* --- Responsive Adjustments --- */
@@ -141,17 +142,18 @@
   .skills-section {
     padding: 60px 20px;
   }
-  
+
   .skills-header {
     margin-bottom: 40px;
     padding-bottom: 20px;
   }
-  
+
   .skills-list {
     gap: 20px;
-    grid-template-columns: 1fr; /* Stack vertically on mobile */
+    grid-template-columns: 1fr;
+    /* Stack vertically on mobile */
   }
-  
+
   .skill-item {
     padding: 30px;
   }

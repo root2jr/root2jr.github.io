@@ -11,8 +11,8 @@ const Skills = () => {
   const skillItemsRef = useRef([]);
 
   const skillCategories = [
-    { id: "01", title: "Full Stack Web", description: "Building scalable, high-performance web applications using the MERN architecture.", tags: ["React.js", "Node.js", "Express", "MongoDB", "Redux", "Python", "FastAPI", "Django"] },
-    { id: "02", title: "Mobile App Dev", description: "Crafting cross-platform native experiences with modern React Native workflows.", tags: ["React Native", "Expo", "NativeWind", "Mobile UI/UX"] },
+    { id: "01", title: "Full Stack Web", description: "Building scalable, high-performance web applications using the MERN architecture.", tags: ["React.js", "Node.js", "Express", "MongoDB", "Redux", "Python", "FastAPI"] },
+    { id: "02", title: "Mobile App Dev", description: "Crafting cross-platform native experiences with modern React Native workflows.", tags: ["React Native", "Expo", "Mobile UI/UX"] },
     { id: "03", title: "AI & Machine Learning", description: "Integrating intelligent models to automate workflows and enhance user interaction.", tags: ["Python", "TensorFlow", "NLP", "OpenAI API","Gemini API", "Data Analysis"] },
     { id: "04", title: "Creative Interactions", description: "Adding life to interfaces with advanced animation libraries and 3D web technologies.", tags: ["GSAP", "Three.js", "Framer Motion", "CSS3 Animations"] }
   ];
@@ -64,13 +64,13 @@ const Skills = () => {
     if (el && !skillItemsRef.current.includes(el)) {
       skillItemsRef.current.push(el);
     }
-  };
+  }; 
 
   return (
-    <section className="skills-section" ref={sectionRef} id="services">
+    <section className="skills-section" ref={sectionRef} id="skills">
       <div className="skills-container">
         <div className="skills-header" ref={titleRef}>
-          <h2 className="section-title outline-text-2">Capabilities</h2>
+          <h2 className="section-title outline-text-2">Skills</h2>
           <p className="section-desc">A comprehensive toolkit for building modern digital products.</p>
         </div>
 

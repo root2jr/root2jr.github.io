@@ -1,0 +1,180 @@
+:root {
+  --bg-color: #050505;
+  --text-main: #ffffff;
+  --text-muted: #888888;
+  --border-subtle: rgba(255, 255, 255, 0.15);
+  --accent-white: #ffffff;
+}
+
+.experience-section {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  padding: 120px 24px;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+.experience-container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* --- Reuse Header Style --- */
+.experience-header {
+  margin-bottom: 100px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* --- Timeline Structure --- */
+.experience-list-wrapper {
+  position: relative;
+  padding-left: 40px; /* Space for the line */
+}
+
+.timeline-line-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--border-subtle);
+}
+
+.timeline-line-progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: var(--text-main);
+  transform-origin: top;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 100px; /* Large spacing for clean look */
+}
+
+/* --- Experience Item --- */
+.experience-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 40px;
+}
+
+.exp-dot {
+  position: absolute;
+  left: -44.5px; /* Centers dot on the line */
+  top: 10px;
+  width: 10px;
+  height: 10px;
+  background: var(--bg-color);
+  border: 2px solid var(--text-main);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.period-tag {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.exp-main {
+  margin-bottom: 16px;
+}
+
+.exp-role {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.02em;
+}
+
+.exp-company {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.exp-description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #ccc;
+  max-width: 800px;
+  margin-top:30px;
+  margin-bottom: 23px;
+}
+
+/* --- Skill Pills (Matching Projects Tech Tags) --- */
+.exp-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-pill {
+  font-size: 0.75rem;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.experience-item:hover .skill-pill {
+  border-color: var(--text-main);
+  color: var(--text-main);
+}
+.company-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+.company-wrapper img{
+    height: 25px;
+    width: 25px;
+    object-fit: cover;
+}
+/* --- Responsive Design --- */
+@media (max-width: 900px) {
+  .experience-item {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .exp-time {
+    margin-bottom: 8px;
+  }
+
+  .exp-role {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience-list-wrapper {
+    padding-left: 30px;
+  }
+  
+  .exp-dot {
+    left: -34.5px;
+  }
+
+  .experience-header {
+    margin-bottom: 60px;
+  }
+}

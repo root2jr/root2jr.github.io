@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../css/About.css';
-import myimg from '../assets/myimg.webp'
+import myimg from '../assets/myimg.jpeg'
 import myresume from '../assets/Jayaraman-P.V-Resume.pdf'
 
 gsap.registerPlugin(ScrollTrigger);
@@ -82,15 +82,14 @@ const About = () => {
           </h2>
           <div className="about-body">
             <p>
-              I’m an 18-year-old Computer Science undergraduate based in Chennai with a strong focus on Software development.
+              I’m a Computer Science undergraduate based in Chennai with a deep focus on Full-Stack Software Development and AI Infrastructure.
             </p>
             <p>
-              I build production-level web and mobile applications using React, React Native, Node.js, Express, MongoDB, and TypeScript, with experience in real-time systems, authentication, and scalable backend design.
+              I architect production-level web and mobile applications using <strong>React, React Native, Node.js, Express, MongoDB, and TypeScript</strong>, with a specialization in real-time systems, secure authentication, and scalable backend design.
             </p>
             <p>
-              I have strong hands-on experience in AI/ML and AI system integration, including building intent-classification models for my personal assistant (Jarvis) using logistic regression for text understanding. I’ve developed and integrated multiple AI chatbots across full-stack products such as Jarvis and LiteraSocial, along with custom AI-driven features for an SIH EdTech platform focused on solving real educational problems at scale. Beyond integrations, I experiment at a lower level by building lightweight interpreters and exploring tokenization, model behavior, and inference, driven by a deep curiosity toward practical AI and machine learning systems.
+              My expertise extends into AI/ML integration, ranging from building intent-classification models using <strong>Logistic Regression</strong> to deploying custom AI-driven features for <strong>EdTech</strong> platforms at scale. I’ve engineered and integrated intelligent systems into products like <strong>Jarvis</strong> and <strong>LiteraSocial</strong>, focusing on practical machine learning applications. Beyond high-level integrations, I explore the lower levels of the stack by building <strong>lightweight interpreters</strong> and researching <strong>LLM tokenization, model behavior, and self-hosted inference</strong>—driven by a philosophy of continuous technical optimization.
             </p>
-
           </div>
 
 
@@ -101,7 +100,7 @@ const About = () => {
             </div>
             <div className="stat-item">
               <span className="stat-label">Education</span>
-              <span className="stat-value">B.Sc CS {year > 2028 ? "(2027)" : `(${(2028 - year) === 2 ? "2nd" : "3rd"} yr)`}</span>
+              <span className="stat-value">B.Sc CS {year > 2028 ? "" : `(${(2028 - year) === 2 ? "2nd" : "3rd"} yr)`}</span>
             </div>
             <div className="stat-item">
               <span className="stat-label">Focus</span>
@@ -109,7 +108,7 @@ const About = () => {
             </div>
           </div>
 
-          <a className="download-cv-btn" href={myresume} download="Jayaraman-P.V-Resume.pdf" style={{textDecoration:"none"}}>
+          <a className="download-cv-btn" href={myresume} download="Jayaraman-P.V-Resume.pdf" style={{ textDecoration: "none" }}>
             Download CV <span className="btn-icon">↓</span>
           </a>
         </div>
@@ -132,7 +131,7 @@ const About = () => {
               src={myimg}
               alt="Profile"
               className="profile-image"
-              style={{ display: 'block', width: '100%', zIndex: 1 , objectFit:"cover", height:"fit-content"}}
+              style={{ display: 'block', width: '100%', zIndex: 1, objectFit: "cover", height: "fit-content" }}
             />
           </div>
         </div>
