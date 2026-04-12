@@ -146,7 +146,7 @@ const projectDatas = [{
     liveLink: "https://jramportfolio.online"
 },
 {
-    title: "EdTech AI Learning Platform",
+    title: "EdTech AI ",
     category: "AI Systems & Education Technology",
     duration: "3 Months | 2025",
     techList: ["FastAPI", "Node.js", "React", "MongoDB", "Python", "NLP"],
@@ -334,14 +334,14 @@ const ProjectDetail = ({ id }) => {
         <div ref={containerRef} className="editorial-wrapper">
             <div ref={loaderRef} className="gsap-loader" />
             <div className="editorial-footer">
-                <a href="/" style={{ display: "flex", gap: 15 }}><p>←</p>  <p>Return to Portfolio</p></a>
+                <a href="/" style={{ display: "flex", gap: 15 }}><p>←</p>  <p>Home</p></a>
             </div>
             {/* Header Area */}
             <header className="editorial-header">
                 <h1 className="editorial-title">{project.title}</h1>
                 <p className="eyebrow">{project.category} | {project.duration}</p>
                 <div className="editorial-meta">
-                    <div className="meta-item"><strong>Tech Stack</strong> {project.techList.join(", ")}</div>
+                    <div className="meta-item"><strong>Tech Stack:</strong> {project.techList.join(", ")}</div>
                 </div>
             </header>
 

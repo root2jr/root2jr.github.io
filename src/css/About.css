@@ -180,7 +180,6 @@
 
   .image-wrapper {
     max-width: 100%; /* Full width image on mobile */
-    aspect-ratio: 16/9; /* Widescreen on mobile looks better usually */
   }
   
   .about-stats {

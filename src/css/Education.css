@@ -78,7 +78,11 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   display: block;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
   margin-bottom: 12px;
+  padding-bottom: 15px;
 }
 
 .edu-degree {
@@ -89,10 +93,11 @@
 }
 
 .edu-institution {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: var(--muted-gray);
   margin-bottom: 24px;
+  padding-bottom: 15px;
 }
 
 .edu-description {
@@ -143,5 +148,8 @@
 
   .edu-title {
     font-size: 2.8rem;
+  }
+  .edu-institution{
+    line-height: 25px;
   }
 }
