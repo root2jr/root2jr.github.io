@@ -12,31 +12,9 @@ import { Link } from 'react-router-dom';
 gsap.registerPlugin(ScrollTrigger);
 
 const projectsData = [
-  {
+  , {
     id: 1,
-    title: "JARVIS – Personal AI Assistant",
-    description: "A full-stack personal AI assistant designed to manage tasks, reminders, and contextual memory through a secure, scalable architecture. Users can authenticate, store long-term memories, schedule reminders, and receive automated notifications, while the system handles intent processing, memory retrieval, and real-time interactions via a robust backend and responsive cross-platform client.",
-    tech: [
-      "React",
-      "React Native",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "JWT",
-      "FastAPI",
-      "Python",
-      "Gemini API",
-      "Machine Learning",
-      "Git"
-
-    ],
-    image: img2,
-    liveLink: "https://j-a-r-v-i-s-ai.netlify.app",
-    codeLink: "https://github.com/root2jr/jarvis-ai",
-    src: "jarvis"
-  }, {
-    id: 2,
-    title: "AI-Powered EdTech Learning Platform",
+    title: "EdTech AI",
     description:
       "A full-stack EdTech platform that transforms video-based learning into structured, interactive lessons using AI. Teachers can create classes, assign lessons via YouTube videos, and track student performance, while students receive AI-generated summaries, quizzes, and progress analytics. The system automates transcription, content understanding, assessment generation, and performance analysis through a scalable backend architecture.",
     tech: [
@@ -55,6 +33,23 @@ const projectsData = [
     liveLink: "https://edtechx-ai.netlify.app",
     codeLink: "https://github.com/root2jr/EdTech_AI",
     src: "edtech-ai"
+  }, {
+    id: 2,
+    title: "Aptitude Test & Student Analytics System",
+    description: "A full-stack aptitude testing platform built for academic evaluation, enabling administrators to create and manage timed tests while students attempt structured question sets with real-time validation. The system supports authentication, automated scoring, result storage, and performance analysis, ensuring fair assessment, scalable test delivery, and streamlined evaluation through a secure backend and intuitive user interface.",
+    tech: [
+      "React",
+      "Node.js",
+      "Python",
+      "FastAPI",
+      "MongoDB",
+      "JWT",
+      "Git"
+
+    ],
+    image: "https://placehold.co/800x600/1a1a1a/FFFFFF/png?text=Aptitude+Test+System",
+    liveLink: "https://aptitude-test-biher.netlify.app",
+    src: "aptitudetest"
   }
   ,
   {
@@ -78,24 +73,6 @@ const projectsData = [
   },
   {
     id: 4,
-    title: "Aptitude Test & Student Analytics System",
-    description: "A full-stack aptitude testing platform built for academic evaluation, enabling administrators to create and manage timed tests while students attempt structured question sets with real-time validation. The system supports authentication, automated scoring, result storage, and performance analysis, ensuring fair assessment, scalable test delivery, and streamlined evaluation through a secure backend and intuitive user interface.",
-    tech: [
-      "React",
-      "Node.js",
-      "Python",
-      "FastAPI",
-      "MongoDB",
-      "JWT",
-      "Git"
-
-    ],
-    image: "https://placehold.co/800x600/1a1a1a/FFFFFF/png?text=Aptitude+Test+System",
-    liveLink: "https://aptitude-test-biher.netlify.app",
-    src: "aptitudetest"
-  },
-  {
-    id: 5,
     title: "LiteraSocial – Social Media Platform with AI Chat",
     description: "A full-stack social media platform focused on expressive writing and thoughtful interaction, enabling users to publish literature, social reflections, and long-form posts in a structured feed. The system supports secure authentication, engagement-based ranking, and an integrated AI chatbot, delivering personalized content discovery and interactive experiences through a scalable backend and modern cross-platform client.",
     tech: [
@@ -113,6 +90,29 @@ const projectsData = [
     liveLink: "#",
     codeLink: "https://github.com/DEVLABS07/LiteraSocial",
     src: "literasocial"
+  },
+  {
+    id: 5,
+    title: "JARVIS – Personal AI Assistant (Web and Android)",
+    description: "A full-stack personal AI assistant designed to manage tasks, reminders, and contextual memory through a secure, scalable architecture. Users can authenticate, store long-term memories, schedule reminders, and receive automated notifications, while the system handles intent processing, memory retrieval, and real-time interactions via a robust backend and responsive cross-platform client.",
+    tech: [
+      "React",
+      "React Native",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "JWT",
+      "FastAPI",
+      "Python",
+      "Gemini API",
+      "Machine Learning",
+      "Git"
+
+    ],
+    image: img2,
+    liveLink: "https://j-a-r-v-i-s-ai.netlify.app",
+    codeLink: "https://github.com/root2jr/jarvis-ai",
+    src: "jarvis"
   },
   {
     id: 6,
@@ -220,18 +220,18 @@ const Projects = () => {
                 <div className="img-overlay"></div>
                 {/* Make sure overflow is hidden on project-image-wrapper in CSS */}
                 <img style={{ objectFit: "scale-down" }} src={project.image} loading="lazy" alt={project.title} className="project-img" />
-                <div className="view-project-btn" style={{width:"fit-content", textDecoration:"none"}}>View Case Study</div>
+                <div className="view-project-btn" style={{ width: "fit-content", textDecoration: "none" }}>View Case Study</div>
               </Link>
 
               <div className="project-content">
                 <div className="project-top">
                   <h3 className="project-title">{project.title}</h3>
-                 { project.title == "Aptitude Test & Student Analytics System"?null:<a href={project.codeLink} target="_blank" rel="noreferrer" className="code-btn">
+                  {project.title == "Aptitude Test & Student Analytics System" ? null : <a href={project.codeLink} target="_blank" rel="noreferrer" className="code-btn">
                     <span>Code</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="arrow-icon">
                       <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                  </a> }
+                  </a>}
                 </div>
                 <p className="project-description">{project.description}</p>
                 <div className="tech-stack">

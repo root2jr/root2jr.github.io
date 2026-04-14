@@ -3,19 +3,29 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../css/Experience.css';
 import '../css/Projects.css';
+import generic from '../assets/generic.png';
 import cmco from '../assets/images.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const experienceData = [
     {
+        id: 2,
+        img: generic,
+        role: "Freelance Web developer",
+        company: "Self-Employed",
+        period: "Nov 2025 – Jan 2026",
+        description: `<p>Designing and engineering full-stack web platforms using React, Node.js, and MongoDB. Focused on delivering production-ready applications with an emphasis on clean architecture, scalable backends, and high-fidelity user experiences.</p>`,
+        skills: ["MongoDB", "React", "Express.js", "Node.js", "HTML", "CSS", "Artificial Intelligence", "Python", "FastAPI"]
+    },
+    {
         id: 1,
         img: cmco,
         role: "Digital Marketing and AI Research Intern",
         company: "Columbus Mckinnon Corporation EMEA",
         period: "Jan 2026 – Present",
-        description: `<strong>Systems Management:</strong> Orchestrating global digital workflows across CMS, PIM, and DAM ecosystems to maintain data integrity and asset distribution.<br/> <strong>AI Research</strong>: Architecting a self-hosted LLM framework to optimize internal marketing operations through local inference and private RAG systems. <br/> <strong>Strategic Optimization:</strong> Analyzing enterprise infrastructure to propose secure, cost-effective AI solutions that ensure complete data sovereignty.`,
-        skills: ["MS-Excel","CMS","PIM","DAM", "HTML", "CSS", "Artificial Intelligence", "LLM"]
+        description: `<ul><li><strong>Systems Management:</strong> Orchestrating global digital workflows across CMS, PIM, and DAM ecosystems to maintain data integrity and asset distribution.<br/></li><li><strong>AI Research</strong>: Architecting a self-hosted LLM framework to optimize internal marketing operations through local inference and private RAG systems. <br/> </li><li><strong>Strategic Optimization:</strong> Analyzing enterprise infrastructure to propose secure, cost-effective AI solutions that ensure complete data sovereignty.</li></ul>`,
+        skills: ["MS-Excel", "CMS", "PIM", "DAM", "HTML", "CSS", "Artificial Intelligence", "LLM"]
     },
 ];
 
@@ -114,12 +124,12 @@ const Experience = () => {
                                     <div className="exp-main">
                                         <h3 className="exp-role">{exp.role}</h3>
                                         <div className="company-wrapper">
-                                            <img src={exp.img} alt="CMCO Logo" />
+                                            <img src={exp.img} />
                                             <h4 className="exp-company">{exp.company}</h4>
                                         </div>
                                     </div>
 
-                                    <p className="exp-description" dangerouslySetInnerHTML={{ __html: exp.description }}/>
+                                    <p className="exp-description" dangerouslySetInnerHTML={{ __html: exp.description }} />
 
                                     <div className="tech-stack">
                                         {exp.skills.map((skill, index) => (

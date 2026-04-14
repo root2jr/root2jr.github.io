@@ -1,0 +1,189 @@
+:root {
+    --neon-blue: #ffffff;
+    /* Swapped to white */
+    --neon-glow: rgba(255, 255, 255, 0.6);
+    /* Softened white glow */
+    --reactor-black: #050505;
+}
+
+/* --- MAIN WRAPPER --- */
+.arc-loader-wrapper {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--reactor-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    overflow: hidden;
+    pointer-events: none;
+    /* Prevents scrolling during load */
+}
+
+.reactor-container {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    will-change: transform, opacity;
+}
+
+/* --- BASE & HEX MESH --- */
+.reactor-base {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    background: #000;
+    border-radius: 50%;
+    border: 4px solid var(--reactor-black);
+}
+
+.hex-mesh-glow {
+    position: absolute;
+    width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.05);
+    background-image: radial-gradient(var(--neon-blue) 2px, transparent 2px);
+    background-size: 10px 10px;
+    box-shadow: 0 0 40px var(--neon-glow), inset 0 0 40px var(--neon-glow);
+    z-index: 2;
+}
+
+/* --- THE 10 THICK GEAR BLOCKS --- */
+.gear-blocks-frame {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+.gear-block {
+    position: absolute;
+    width: 45px;
+    height: 55px;
+    background: var(--reactor-black);
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid transparent;
+    transition: background-color 0.1s ease;
+}
+
+.block-slits {
+    margin-top: 4px;
+    width: 20px;
+    height: 8px;
+    border-top: 2px dashed var(--neon-blue);
+    border-bottom: 2px dashed var(--neon-blue);
+    opacity: 0.5;
+}
+
+/* --- INNER DASHED RING --- */
+.inner-dashed-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 6;
+}
+
+.inner-dash {
+    position: absolute;
+    width: 8px;
+    height: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 2px;
+}
+
+.inner-dashed-ring::after {
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 15px solid var(--reactor-black);
+    z-index: 7;
+}
+
+/* --- THE CENTRAL CORE --- */
+.central-core {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 15;
+    background: #000;
+    border: 2px solid var(--neon-blue);
+    box-shadow: 0 0 20px var(--neon-glow);
+}
+
+.core-hex-mesh {
+    position: absolute;
+    inset: 2px;
+    border-radius: 50%;
+    background-image: radial-gradient(var(--neon-blue) 1.5px, transparent 1.5px);
+    background-size: 8px 8px;
+    opacity: 0.8;
+}
+
+.core-hotspot {
+    width: 20px;
+    height: 20px;
+    background: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #fff, 0 0 40px var(--neon-glow);
+    z-index: 16;
+}
+
+/* --- TECHY TERMINAL LOADER --- */
+.techy-loader-module {
+    position: absolute;
+    bottom: 60px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    z-index: 20;
+}
+
+.terminal-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    color: var(--neon-blue);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.progress-bar-container {
+    width: 280px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.15);
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+}
+
+.progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background: var(--neon-blue);
+    box-shadow: 0 0 10px var(--neon-glow);
+}

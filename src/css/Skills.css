@@ -131,7 +131,7 @@
   transition: all 0.3s ease;
 }
 
-.skill-item:hover .tag {
+.tag:hover {
   background: rgba(0, 0, 0, 0.15);
   border-color: rgba(0, 0, 0, 0.4);
   color: black;

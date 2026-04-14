@@ -95,10 +95,10 @@ const Hero = () => {
 
         <div ref={btnRef} className='hero-buttons'>
           <a href='#selected-works' className="hero-cta">
-            View Projects <span className="arrow">→</span>
+            View Projects <span className="arrow-hero">→</span>
           </a>
           <a href={myResume} download={"Jayaraman-P.V-Resume.pdf"} className="hero-cta">
-            Download CV <span className="arrow">→</span>
+            Download CV <span className="arrow-hero">→</span>
           </a>
         </div>
       </div>

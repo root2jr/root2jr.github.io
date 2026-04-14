@@ -6,9 +6,7 @@ import img2 from '../assets/thumbsup.webp'
 import img3 from '../assets/literasocial.webp'
 import img4 from '../assets/jrv1.webp'
 import img5 from '../assets/02.webp'
-import { useParams } from 'react-router-dom';
-
-
+import { Link, useParams } from 'react-router-dom';
 
 const projectDatas = [{
     title: "Jarvis AI Assistant",
@@ -146,7 +144,7 @@ const projectDatas = [{
     liveLink: "https://jramportfolio.online"
 },
 {
-    title: "EdTech AI ",
+    title: "EdTech AI Learning Platform",
     category: "AI Systems & Education Technology",
     duration: "3 Months | 2025",
     techList: ["FastAPI", "Node.js", "React", "MongoDB", "Python", "NLP"],
@@ -282,36 +280,33 @@ const projectDatas = [{
 }
 ]
 
-
-const ProjectDetail = ({ id }) => {
+const ProjectDetail = () => {
     const params = useParams();
     const [project, setProject] = useState(projectDatas[0]);
     const containerRef = useRef(null);
     const loaderRef = useRef(null);
     const date = new Date();
-    useEffect(() => {
-        scrollTo(0, 0);
-    }, [])
 
     useEffect(() => {
-        console.log(params.id);
-        if (params.id == "jarvis") {
-            setProject(projectDatas[0])
-        } else if (params.id == "edtech-ai") {
+        window.scrollTo(0, 0);
+    }, []);
+
+    useEffect(() => {
+        // Your original matching logic
+        if (params.id === "jarvis") {
+            setProject(projectDatas[0]);
+        } else if (params.id === "edtech-ai") {
             setProject(projectDatas[3]);
-        }
-        else if (params.id == "thumbsup") {
+        } else if (params.id === "thumbsup") {
             setProject(projectDatas[1]);
-        }
-        else if (params.id == "aptitudetest") {
+        } else if (params.id === "aptitudetest") {
             setProject(projectDatas[5]);
-        }
-        else if (params.id == "literasocial") {
+        } else if (params.id === "literasocial") {
             setProject(projectDatas[2]);
-        }
-        else if (params.id == "jrv1-interpreter") {
+        } else if (params.id === "jrv1-interpreter") {
             setProject(projectDatas[4]);
         }
+
         const ctx = gsap.context(() => {
             const tl = gsap.timeline();
             tl.to(loaderRef.current, {
@@ -327,21 +322,34 @@ const ProjectDetail = ({ id }) => {
                     ease: "power3.out"
                 });
         }, containerRef);
+
         return () => ctx.revert();
-    }, [project]);
+    }, [project, params.id]);
 
     return (
         <div ref={containerRef} className="editorial-wrapper">
             <div ref={loaderRef} className="gsap-loader" />
             <div className="editorial-footer">
-                <a href="/" style={{ display: "flex", gap: 15 }}><p>←</p>  <p>Home</p></a>
+                <Link to="/" className="premium-back-btn email-link">
+                    <span className="arrow-mask">
+                        <span className="arrow arrow-out">←</span>
+                        <span className="arrow arrow-in">←</span>
+                    </span>
+                    <span className="back-text">Return Home</span>
+                </Link>
             </div>
+
             {/* Header Area */}
             <header className="editorial-header">
                 <h1 className="editorial-title">{project.title}</h1>
                 <p className="eyebrow">{project.category} | {project.duration}</p>
                 <div className="editorial-meta">
-                    <div className="meta-item"><strong>Tech Stack:</strong> {project.techList.join(", ")}</div>
+                    {/* NEW: Tech Stack Pills */}
+                    <div className="tech-stack-container">
+                        {project.techList.map((tech, i) => (
+                            <span key={i} className="tech-pill">{tech}</span>
+                        ))}
+                    </div>
                 </div>
             </header>
 
@@ -388,13 +396,18 @@ const ProjectDetail = ({ id }) => {
                 <div className="content-row">
                     <aside className="side-heading">Outcome</aside>
                     <div className="body-text">
-                        <p>{project.resultsText}</p>
+                        {/* NEW: Outcome text highlight line */}
+                        <p className="highlight-text">{project.resultsText}</p>
                     </div>
                 </div>
-                {project.title == "Aptitude Test & Assessment Platform" ? null : <div className="meta-buttons">
-                    <div className="meta-item-editorial"><a href={project.github} target="_blank">Source Code ↗</a></div>
-                    <div className="meta-item-editorial"><a href={project.liveLink} target="_blank">Live Site ↗</a></div>
-                </div>}
+
+                {project.title === "Aptitude Test & Assessment Platform" ? null : (
+                    /* NEW: Premium Action Buttons */
+                    <div className="meta-buttons">
+                        <a href={project.github} target="_blank" rel="noreferrer" className="action-btn outline-btn">Source Code ↗</a>
+                        <a href={project.liveLink} target="_blank" rel="noreferrer" className="action-btn solid-btn">Live Site ↗</a>
+                    </div>
+                )}
 
             </article>
 

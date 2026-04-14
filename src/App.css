@@ -7,3 +7,34 @@
     box-shadow: 0 5px 10px #25d3656c;
     transition: .5s ease;
 }
+
+/* Container for the scrollbar */
+*::-webkit-scrollbar {
+  width: 6px; /* Ultra thin for a sleek look */
+  height: 6px; /* For horizontal scroll if needed */
+}
+
+/* The background area of the scrollbar */
+*::-webkit-scrollbar-track {
+  background: #050505; /* Matches your --bg-dark */
+}
+
+/* The actual draggable handle */
+*::-webkit-scrollbar-thumb {
+  background-color: #333; /* Dark gray so it's subtle */
+  border-radius: 0px; /* Sharp edges to match your buttons */
+  border: 1px solid #050505; /* Creates a "floating" gap effect */
+  transition: background-color 0.3s ease;
+}
+
+/* Hover state: Light up to pure white when the user interacts */
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #ffffff; 
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* Subtle neon glow */
+}
+
+/* Firefox Support (Standard property) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #333 #050505;
+}

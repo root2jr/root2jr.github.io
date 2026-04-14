@@ -88,7 +88,7 @@ const About = () => {
               I architect production-level web and mobile applications using <strong>React, React Native, Node.js, Express, MongoDB, and TypeScript</strong>, with a specialization in real-time systems, secure authentication, and scalable backend design.
             </p>
             <p>
-              My expertise extends into AI/ML integration, ranging from building intent-classification models using <strong>Logistic Regression</strong> to deploying custom AI-driven features for <strong>EdTech</strong> platforms at scale. I’ve engineered and integrated intelligent systems into products like <strong>Jarvis</strong> and <strong>LiteraSocial</strong>, focusing on practical machine learning applications. Beyond high-level integrations, I explore the lower levels of the stack by building <strong>lightweight interpreters</strong> and researching <strong>LLM tokenization, model behavior, and self-hosted inference</strong>—driven by a philosophy of continuous technical optimization.
+              My expertise extends into AI/ML integration, ranging from building intent-classification models using <strong>Logistic Regression</strong> to deploying custom AI-driven features for <strong>EdTech</strong> platforms at scale. I’ve engineered and integrated intelligent systems into products like <strong>Jarvis</strong> and <strong>LiteraSocial</strong>, focusing on practical machine learning applications. Beyond high-level integrations, I explore the lower levels of the stack by building <strong>lightweight interpreters</strong> and researching <strong>LLM tokenization, model behavior, and self-hosted inference</strong> driven by a philosophy of continuous technical optimization.
             </p>
           </div>
 
