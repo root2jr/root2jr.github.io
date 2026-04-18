@@ -1,12 +1,9 @@
 :root {
     --neon-blue: #ffffff;
-    /* Swapped to white */
     --neon-glow: rgba(255, 255, 255, 0.6);
-    /* Softened white glow */
     --reactor-black: #050505;
 }
 
-/* --- MAIN WRAPPER --- */
 .arc-loader-wrapper {
     position: fixed;
     inset: 0;
@@ -14,22 +11,45 @@
     height: 100vh;
     background: var(--reactor-black);
     display: flex;
+    flex-direction: column;
+    /* Allows stacking */
     justify-content: center;
     align-items: center;
     z-index: 99999;
     overflow: hidden;
     pointer-events: none;
-    /* Prevents scrolling during load */
 }
 
 .reactor-container {
     position: relative;
     width: 320px;
+    /* Fixed base size */
     height: 320px;
     display: flex;
     justify-content: center;
     align-items: center;
     will-change: transform, opacity;
+    /* NEW: This ensures it never exceeds the screen width */
+    transition: transform 0.3s ease;
+}
+
+/* --- RESPONSIVE SCALE --- */
+@media (max-width: 400px) {
+    .reactor-container {
+        transform: scale(0.8);
+        /* Shrinks the reactor to fit small mobile screens */
+    }
+
+    .techy-loader-module {
+        position: absolute;
+        bottom: 10%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        z-index: 20;
+    }
 }
 
 /* --- BASE & HEX MESH --- */
@@ -54,7 +74,7 @@
     z-index: 2;
 }
 
-/* --- THE 10 THICK GEAR BLOCKS --- */
+/* --- GEAR BLOCKS --- */
 .gear-blocks-frame {
     position: absolute;
     width: 100%;
@@ -115,7 +135,7 @@
     z-index: 7;
 }
 
-/* --- THE CENTRAL CORE --- */
+/* --- CENTRAL CORE --- */
 .central-core {
     width: 70px;
     height: 70px;
@@ -130,15 +150,6 @@
     box-shadow: 0 0 20px var(--neon-glow);
 }
 
-.core-hex-mesh {
-    position: absolute;
-    inset: 2px;
-    border-radius: 50%;
-    background-image: radial-gradient(var(--neon-blue) 1.5px, transparent 1.5px);
-    background-size: 8px 8px;
-    opacity: 0.8;
-}
-
 .core-hotspot {
     width: 20px;
     height: 20px;
@@ -151,7 +162,7 @@
 /* --- TECHY TERMINAL LOADER --- */
 .techy-loader-module {
     position: absolute;
-    bottom: 60px;
+    bottom: 10%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -160,17 +171,22 @@
     z-index: 20;
 }
 
+
 .terminal-text {
     font-family: 'Inter', sans-serif;
-    font-size: 0.8rem;
+    font-size: clamp(0.7rem, 2vw, 0.8rem);
+    /* Scales text size */
     letter-spacing: 0.25em;
     color: var(--neon-blue);
     text-transform: uppercase;
     text-align: center;
+    padding: 0 20px;
+    /* Prevents text from hitting screen edges */
 }
 
 .progress-bar-container {
-    width: 280px;
+    width: min(280px, 80vw);
+    /* Responsive width */
     height: 2px;
     background: rgba(255, 255, 255, 0.15);
     position: relative;
