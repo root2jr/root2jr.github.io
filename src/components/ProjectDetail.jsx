@@ -5,7 +5,8 @@ import img1 from '../assets/jarvis-cover.webp'
 import img2 from '../assets/thumbsup.webp'
 import img3 from '../assets/literasocial.webp'
 import img4 from '../assets/jrv1.webp'
-import img5 from '../assets/02.webp'
+import img5 from '../assets/02.webp';
+import img6 from '../assets/voltFinance.jpeg';
 import { Link, useParams } from 'react-router-dom';
 
 const projectDatas = [{
@@ -51,7 +52,7 @@ const projectDatas = [{
         "The deployed system achieved approximately 92% accuracy in intent routing across core task categories and manages thousands of contextual memory nodes per user, enabling a personalized experience that improves with continued use.",
 
     github: "https://github.com/root2jr",
-    liveLink: "https://jramportfolio.online"
+    liveLink: "https://j-a-r-v-i-s-ai.netlify.app"
 },
 {
     title: "Real-Time Chat & Collaboration Platform",
@@ -96,7 +97,7 @@ const projectDatas = [{
         "The system maintained stable real-time synchronization under concurrent usage and achieved sub-100ms message propagation latency during local and controlled network testing.",
 
     github: "https://github.com/root2jr",
-    liveLink: "https://jramportfolio.online"
+    liveLink: "https://thumbsup07.netlify.app"
 },
 {
     title: "LiteraSocial",
@@ -141,7 +142,6 @@ const projectDatas = [{
         "The platform successfully delivered personalized content feeds with consistent performance under growing datasets and demonstrated stable interaction-driven ranking behavior.",
 
     github: "https://github.com/root2jr",
-    liveLink: "https://jramportfolio.online"
 },
 {
     title: "EdTech AI Learning Platform",
@@ -186,7 +186,7 @@ const projectDatas = [{
         "The platform demonstrated consistent intent classification accuracy across core learning scenarios and successfully maintained contextual continuity across sessions, enabling personalized AI-assisted learning flows for students.",
 
     github: "https://github.com/root2jr",
-    liveLink: "https://jramportfolio.online"
+    liveLink: "https://edtech-ai.netlify.app"
 },
 {
     title: "Jr-V1 Custom Language Interpreter",
@@ -231,7 +231,6 @@ const projectDatas = [{
         "The interpreter reliably executes custom scripts with consistent output, providing a clear understanding of language execution mechanics and low-level program control.",
 
     github: "https://github.com/root2jr",
-    liveLink: "https://github.com/root2jr"
 },
 {
     title: "Aptitude Test & Assessment Platform",
@@ -276,7 +275,50 @@ const projectDatas = [{
         "The platform was successfully deployed within the college environment, supporting multiple concurrent assessments with consistent timing guarantees and reliable result generation for large student batches.",
 
     github: "https://github.com/root2jr",
-    liveLink: "https://jramportfolio.online"
+},
+{
+    title: "Volt Finance AI",
+    category: "FinTech & AI Ecosystem",
+    duration: "Ongoing | 2026",
+    techList: ["React Native", "FastAPI", "MongoDB", "Gemini 2.5 Flash"],
+    image: img6,
+
+    challengeText:
+        "Standard finance trackers rely on retrospective logging and fail to account for 'Shadow Debt'—future planned commitments. The objective was to build a proactive, luxury-feel financial engine that calculates safe effective liquidity while utilizing AI to enforce budget discipline in real-time.",
+
+    architectureText:
+        "The ecosystem operates on a decoupled client-server architecture. A highly tactile, monochromatic React Native frontend communicates with an asynchronous Python FastAPI backend, which handles MongoDB state management and orchestrates low-latency background tasks with the Gemini AI API.",
+
+    detailedSteps: [
+        {
+            title: "Shadow Debt Engine",
+            description:
+                "Engineered a dynamic ledger system that subtracts active capital pledges from the raw wallet balance, providing users with a highly conservative 'Effective Liquidity' metric."
+        },
+        {
+            title: "Asynchronous AI Push Protocol",
+            description:
+                "Developed non-blocking background workers that analyze recent transaction clusters and trigger contextual, one-sentence AI-generated financial insights to the user's lock screen."
+        }
+    ],
+
+    features: [
+        {
+            name: "Commitment Vault (Toggle Protocol)",
+            detail:
+                "Allows users to log, pause, and activate financial pledges, dynamically altering their effective balance without deleting data."
+        },
+        {
+            name: "Hyper-Tactile Interface",
+            detail:
+                "Custom-built floating widgets, glassmorphic bottom sheets, and integrated haptic feedback systems designed to mimic a high-end operating system."
+        }
+    ],
+
+    resultsText:
+        "Volt Finance successfully merges rigorous mathematical state management with proactive AI interventions, resulting in a premium tool that actively prevents overspending and enforces financial discipline.",
+
+    github: "https://github.com/root2jr/volt-finance",
 }
 ]
 
@@ -305,6 +347,9 @@ const ProjectDetail = () => {
             setProject(projectDatas[2]);
         } else if (params.id === "jrv1-interpreter") {
             setProject(projectDatas[4]);
+        }
+        else if (params.id === "volt-finance") {
+            setProject(projectDatas[6]);
         }
 
         const ctx = gsap.context(() => {
@@ -405,7 +450,7 @@ const ProjectDetail = () => {
                     /* NEW: Premium Action Buttons */
                     <div className="meta-buttons">
                         <a href={project.github} target="_blank" rel="noreferrer" className="action-btn outline-btn">Source Code ↗</a>
-                        <a href={project.liveLink} target="_blank" rel="noreferrer" className="action-btn solid-btn">Live Site ↗</a>
+                        {project.liveLink ? <a href={project.liveLink} target="_blank" rel="noreferrer" className="action-btn solid-btn">Live Site ↗</a> : null}
                     </div>
                 )}
 

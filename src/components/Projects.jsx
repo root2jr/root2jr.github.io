@@ -7,6 +7,8 @@ import img2 from "../assets/jarvis-cover.webp";
 import img3 from "../assets/jrv1.webp";
 import img4 from "../assets/thumbsup.webp";
 import img5 from "../assets/literasocial.webp";
+import img6 from "../assets/voltFinance.jpeg"
+
 import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -129,7 +131,23 @@ const projectsData = [
     liveLink: "#",
     codeLink: "https://github.com/root2jr/Jr-v1-Interpreter",
     src: "jrv1-interpreter"
-  }
+  },
+  {
+    id: 7,
+    title: "Volt Finance AI",
+    description: "A premium, highly tactile financial management ecosystem designed to track real-time liquidity and 'Shadow Debt' through active commitments. Built with a React Native frontend and a FastAPI backend, it integrates Gemini 2.5 Flash for contextual push notifications, daily budget strategies, and intelligent transaction categorization within a sleek, glassmorphic monochromatic interface.",
+    tech: [
+      "React Native",
+      "TypeScript",
+      "FastAPI",
+      "MongoDB",
+      "Gemini AI"
+    ],
+    image: img6,
+    liveLink: "#",
+    codeLink: "https://github.com/yourusername/volt-finance",
+    src: "volt-finance"
+}
 ];
 
 
