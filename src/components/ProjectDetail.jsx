@@ -6,15 +6,81 @@ import img2 from '../assets/thumbsup.webp'
 import img3 from '../assets/literasocial.webp'
 import img4 from '../assets/jrv1.webp'
 import img5 from '../assets/02.webp';
-import img6 from '../assets/voltFinance.jpeg';
+import img6 from '../assets/voltFinance.webp';
+import img7 from '../assets/core.webp';
+import volt1 from '../assets/volt-finance/1.jpeg';
+import volt2 from '../assets/volt-finance/2.jpeg';
+import volt4 from '../assets/volt-finance/4.jpeg';
+import volt5 from '../assets/volt-finance/5.jpeg';
+import volt6 from '../assets/volt-finance/6.jpeg';
+import core1 from '../assets/core/1.jpeg';
+import core2 from '../assets/core/2.jpeg';
+import core3 from '../assets/core/3.jpeg';
+import core4 from '../assets/core/4.jpeg';
+import core5 from '../assets/core/5.jpeg';
+import core6 from '../assets/core/6.jpeg';
+import core7 from '../assets/core/7.jpeg';
 import { Link, useParams } from 'react-router-dom';
+
+// High-Performance Reusable Editorial Carousel
+const ProjectCarousel = ({ images, title }) => {
+    const imageList = Array.isArray(images) ? images : [images];
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    if (!imageList || imageList.length === 0) return null;
+
+    const nextSlide = () => {
+        setCurrentIndex((prev) => (prev + 1) % imageList.length);
+    };
+
+    const prevSlide = () => {
+        setCurrentIndex((prev) => (prev - 1 + imageList.length) % imageList.length);
+    };
+
+    return (
+        <div className="main-visual carousel-container">
+            <div 
+                className="carousel-track" 
+                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+                {imageList.map((img, idx) => (
+                    <div className="carousel-slide" key={idx}>
+                        <img src={img} alt={`${title} Asset ${idx + 1}`} loading="lazy" />
+                    </div>
+                ))}
+            </div>
+
+            {/* Render Navigation Layout Only for Multi-Image Arrays */}
+            {imageList.length > 1 && (
+                <>
+                    <button onClick={prevSlide} className="carousel-btn prev-btn" aria-label="Previous Slide">
+                        ←
+                    </button>
+                    <button onClick={nextSlide} className="carousel-btn next-btn" aria-label="Next Slide">
+                        →
+                    </button>
+                    <div className="carousel-dots">
+                        {imageList.map((_, idx) => (
+                            <button
+                                key={idx}
+                                className={`carousel-dot ${currentIndex === idx ? 'active' : ''}`}
+                                onClick={() => setCurrentIndex(idx)}
+                                aria-label={`Maps to asset slide ${idx + 1}`}
+                            />
+                        ))}
+                    </div>
+                </>
+            )}
+        </div>
+    );
+};
 
 const projectDatas = [{
     title: "Jarvis AI Assistant",
     category: "Systems & Automation",
     duration: "4 Months | 2025",
     techList: ["FastAPI", "Node.js", "React Native", "MongoDB", "TensorFlow"],
-    image: img1,
+    image: [img1],
 
     challengeText:
         "Most personal AI assistants rely heavily on cloud-based APIs, resulting in high latency, poor privacy guarantees, and weak contextual memory. The goal was to engineer a low-latency assistant capable of deterministic task execution while maintaining persistent, evolving conversational context across platforms.",
@@ -39,12 +105,12 @@ const projectDatas = [{
         {
             name: "Cross-Platform Command Execution",
             detail:
-                "Integrated JWT-secured REST APIs with WebSockets to enable real-time command execution and Android-native notification triggers from a web-based control interface."
+                "Integrated JWT-secured REST APIs with WebSockets to enable real-time command execution and Android-native notification triggers from a web-based control interface.",
         },
         {
             name: "Hybrid Deterministic + ML Logic",
             detail:
-                "Combined rule-based execution for critical actions (reminders, automation) with ML-driven interpretation for conversational prompts to ensure correctness without sacrificing flexibility."
+                "Combined rule-based execution for critical actions (reminders, automation) with ML-driven interpretation for conversational prompts to ensure correctness without sacrificing flexibility.",
         }
     ],
 
@@ -59,7 +125,7 @@ const projectDatas = [{
     category: "Real-Time Systems",
     duration: "3 Months | 2025",
     techList: ["React", "FastAPI", "MongoDB", "WebSockets", "WebRTC"],
-    image: img2,
+    image: [img2],
 
     challengeText:
         "Most student collaboration tools struggle with real-time consistency, role enforcement, and scalable communication. The objective was to design a low-latency, role-aware messaging platform capable of handling concurrent users with real-time updates and peer-to-peer communication.",
@@ -104,7 +170,7 @@ const projectDatas = [{
     category: "Social Platforms & AI Integration",
     duration: "2.5 Months | 2025",
     techList: ["React Native", "Node.js", "MongoDB", "JWT", "AI Chat Systems"],
-    image: img3,
+    image: [img3],
 
     challengeText:
         "Traditional social platforms prioritize engagement metrics over meaningful content discovery. The goal was to build a literature-focused social platform where content ranking is driven by interaction quality rather than raw popularity, while embedding AI-driven interaction within the ecosystem.",
@@ -148,7 +214,7 @@ const projectDatas = [{
     category: "AI Systems & Education Technology",
     duration: "3 Months | 2025",
     techList: ["FastAPI", "Node.js", "React", "MongoDB", "Python", "NLP"],
-    image: img5,
+    image: [img5],
 
     challengeText:
         "Most EdTech platforms rely on static content delivery and fail to adapt to individual learning patterns. The goal was to design an AI-driven system capable of understanding student intent, tracking learning context, and delivering adaptive responses without excessive cloud dependency or latency.",
@@ -193,7 +259,7 @@ const projectDatas = [{
     category: "Systems Programming",
     duration: "1.5 Months | 2024",
     techList: ["C", "Compiler Design", "Systems Programming"],
-    image: img4,
+    image: [img4],
 
     challengeText:
         "High-level languages abstract away execution details, limiting understanding of how programs are actually parsed and executed. The objective was to build a custom interpreter from scratch to gain full control over lexical analysis, parsing, and runtime execution.",
@@ -237,7 +303,7 @@ const projectDatas = [{
     category: "Assessment Systems & Educational Platforms",
     duration: "2 Months | 2025",
     techList: ["React", "Node.js", "Express.js", "MongoDB", "JWT"],
-    image: "https://placehold.co/800x600/1a1a1a/FFFFFF/png?text=Aptitude+Test+System",
+    image: ["https://placehold.co/800x600/1a1a1a/FFFFFF/png?text=Aptitude+Test+System"],
 
     challengeText:
         "Most internal college assessment systems are rigid, insecure, and fail to scale beyond basic quizzes. The objective was to design a secure, role-based aptitude testing platform capable of handling timed assessments, automated evaluation, and real-time performance analytics for large student cohorts.",
@@ -281,8 +347,7 @@ const projectDatas = [{
     category: "FinTech & AI Ecosystem",
     duration: "Ongoing | 2026",
     techList: ["React Native", "FastAPI", "MongoDB", "Gemini 2.5 Flash"],
-    image: img6,
-
+    image: [volt1, volt2, volt4, volt5, volt6],
     challengeText:
         "Standard finance trackers rely on retrospective logging and fail to account for 'Shadow Debt'—future planned commitments. The objective was to build a proactive, luxury-feel financial engine that calculates safe effective liquidity while utilizing AI to enforce budget discipline in real-time.",
 
@@ -319,8 +384,51 @@ const projectDatas = [{
         "Volt Finance successfully merges rigorous mathematical state management with proactive AI interventions, resulting in a premium tool that actively prevents overspending and enforces financial discipline.",
 
     github: "https://github.com/root2jr/volt-finance",
+},
+{
+    title: "CORE",
+    category: "Intelligent Personal Assisting System",
+    duration: "Ongoing | 2026",
+    techList: ["React Native", "FastAPI", "MongoDB", "AsyncStorage", "Gemini API"],
+    image: [core1, core2, core3, core4, core5, core6, core7],
+    challengeText:
+        "Productivity frameworks fragment personal optimization by isolating academic schedules, physical logs, and software development pipelines into distinct, disconnected silos. The objective was to construct a unified command center that reduces cognitive load, dynamically tracks multi-workspace metrics, and calculates true system efficiency.",
+
+    architectureText:
+        "The application employs a decoupled client-server architecture. A high-fidelity, monochromatic React Native mobile client interfaces with an asynchronous Python FastAPI backend handling user projections, while local persistence matrices are managed directly on the device using optimized AsyncStorage architectures.",
+
+    detailedSteps: [
+        {
+            title: "Peak Performance Streak Engine",
+            description:
+                "Engineered a chronological date-loop validation mechanism that scans biometrics logs and attendance tables to calculate a user's true historical high-score streaks instead of basic retrospective logs."
+        },
+        {
+            title: "Dynamic Workspace Hydration Layer",
+            description:
+                "Developed atomic data sync path protocols that seamlessly interface with MongoDB to handle active syllabus structures, credit weight distributions, and cloud-backed study notation environments."
+        }
+    ],
+
+    features: [
+        {
+            name: "Segmented Metrics Grid Panel",
+            detail:
+                "A premium bento grid asset that isolates current academic track modules, totals semester credit workloads, and tracks real-time progress values inside a highly scannable grid interface."
+        },
+        {
+            name: "Inline Academic Checklist System",
+            detail:
+                "Integrated highly responsive inline inputs and status toggle matrices directly into subject detail views, allowing local assignment and assessment deliverables to be updated instantly."
+        }
+    ],
+
+    resultsText:
+        "CORE successfully synthesizes rigorous mathematical workflow variables and real-time physical telemetry into a singular dashboard interface, delivering a premium tool that visually tracks overall personal execution.",
+
+    github: "https://github.com/root2jr/core-os",
 }
-]
+];
 
 const ProjectDetail = () => {
     const params = useParams();
@@ -334,7 +442,6 @@ const ProjectDetail = () => {
     }, []);
 
     useEffect(() => {
-        // Your original matching logic
         if (params.id === "jarvis") {
             setProject(projectDatas[0]);
         } else if (params.id === "edtech-ai") {
@@ -347,9 +454,10 @@ const ProjectDetail = () => {
             setProject(projectDatas[2]);
         } else if (params.id === "jrv1-interpreter") {
             setProject(projectDatas[4]);
-        }
-        else if (params.id === "volt-finance") {
+        } else if (params.id === "volt-finance") {
             setProject(projectDatas[6]);
+        } else if (params.id === "core") {
+            setProject(projectDatas[7]);
         }
 
         const ctx = gsap.context(() => {
@@ -369,7 +477,7 @@ const ProjectDetail = () => {
         }, containerRef);
 
         return () => ctx.revert();
-    }, [project, params.id]);
+    }, [params.id]);
 
     return (
         <div ref={containerRef} className="editorial-wrapper">
@@ -389,7 +497,6 @@ const ProjectDetail = () => {
                 <h1 className="editorial-title">{project.title}</h1>
                 <p className="eyebrow">{project.category} | {project.duration}</p>
                 <div className="editorial-meta">
-                    {/* NEW: Tech Stack Pills */}
                     <div className="tech-stack-container">
                         {project.techList.map((tech, i) => (
                             <span key={i} className="tech-pill">{tech}</span>
@@ -398,10 +505,8 @@ const ProjectDetail = () => {
                 </div>
             </header>
 
-            {/* Main Image */}
-            <div className="main-visual">
-                <img src={project.image} alt={project.title} />
-            </div>
+            {/* Injected the Dynamic Image Slider Component */}
+            <ProjectCarousel images={project.image} title={project.title} />
 
             {/* Editorial Body */}
             <article className="editorial-body">
@@ -441,13 +546,11 @@ const ProjectDetail = () => {
                 <div className="content-row">
                     <aside className="side-heading">Outcome</aside>
                     <div className="body-text">
-                        {/* NEW: Outcome text highlight line */}
                         <p className="highlight-text">{project.resultsText}</p>
                     </div>
                 </div>
 
                 {project.title === "Aptitude Test & Assessment Platform" ? null : (
-                    /* NEW: Premium Action Buttons */
                     <div className="meta-buttons">
                         <a href={project.github} target="_blank" rel="noreferrer" className="action-btn outline-btn">Source Code ↗</a>
                         {project.liveLink ? <a href={project.liveLink} target="_blank" rel="noreferrer" className="action-btn solid-btn">Live Site ↗</a> : null}

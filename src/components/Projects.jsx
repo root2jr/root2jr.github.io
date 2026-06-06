@@ -7,7 +7,8 @@ import img2 from "../assets/jarvis-cover.webp";
 import img3 from "../assets/jrv1.webp";
 import img4 from "../assets/thumbsup.webp";
 import img5 from "../assets/literasocial.webp";
-import img6 from "../assets/voltFinance.jpeg"
+import img6 from "../assets/voltFinance.webp"
+import img7 from "../assets/core.webp"
 
 import { Link } from 'react-router-dom';
 
@@ -147,7 +148,23 @@ const projectsData = [
     liveLink: "#",
     codeLink: "https://github.com/yourusername/volt-finance",
     src: "volt-finance"
-}
+  },
+  {
+    id: 8,
+    title: "Core",
+    description: "A premium, high-performance personal assisting system designed to synthesize academic tracking, physiological training, and software development into a unified command center. Built with a React Native frontend and a FastAPI backend, it enables precise monitoring of attendance compliance, credit distribution, and academic milestones within a sleek, minimalist monochromatic interface. The platform integrates biometric logging to calculate fitness streaks and nutrition targets while streamlining code productivity through a dedicated developer workspace for managing live build deployment tunnels.", 
+    tech: [
+      "React Native",
+      "TypeScript",
+      "FastAPI",
+      "MongoDB",
+      "Gemini AI"
+    ],
+    image: img7,
+    liveLink: "#",
+    codeLink: "https://github.com/yourusername/volt-finance",
+    src: "core"
+  }
 ];
 
 

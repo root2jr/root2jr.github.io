@@ -70,19 +70,99 @@
   cursor: pointer;
 }
 
-.main-visual {
+/* --- CAROUSEL STRUCTURE & OPTIMIZATION --- */
+.main-visual.carousel-container {
+  position: relative;
   max-width: 1200px;
   margin: 0 auto 120px;
   padding: 0 40px;
+  overflow: hidden; /* Mask out translating slides */
 }
 
-.main-visual img {
+.carousel-track {
+  display: flex;
   width: 100%;
-  max-height: 400px;
+  transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1); /* Match premium elastic ease */
+  will-change: transform;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-slide img {
+  width: 100%;
+  max-height: 500px; /* Bumped up slightly to scale mobile app view arrays nicely */
   object-fit: scale-down;
   border: 1px solid #111;
+  display: block;
 }
 
+/* --- MONOCHROMATIC CAROUSEL CONTROLS --- */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(5, 5, 5, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background: #ffffff;
+  color: #050505;
+  border-color: #ffffff;
+}
+
+.prev-btn {
+  left: 60px; /* Inset slightly to balance within layout bounds */
+}
+
+.next-btn {
+  right: 60px;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.carousel-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.carousel-dot.active {
+  background: #ffffff;
+  transform: scale(1.4);
+}
+
+/* --- EDITORIAL LAYOUT MATRIX --- */
 .editorial-body {
   width: 100%;
   margin: 0 auto;
@@ -149,8 +229,6 @@
   margin-bottom: 0;
 }
 
-
-
 /* --- THE PREMIUM "KINETIC ARROW" BACK BUTTON --- */
 .editorial-footer {
   text-align: left;
@@ -189,7 +267,6 @@
   padding-bottom: 10px;
 }
 
-/* The bounding box that hides the arrows when they fly outside */
 .arrow-mask {
   position: relative;
   display: inline-flex;
@@ -198,7 +275,6 @@
   overflow: hidden;
 }
 
-/* Both arrows share this base style */
 .arrow {
   position: absolute;
   top: 0;
@@ -206,12 +282,10 @@
   transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-/* Arrow 1: Starts visible, ready to fly out left */
 .arrow-out {
   transform: translateX(0);
 }
 
-/* Arrow 2: Starts hidden off to the right, ready to fly in */
 .arrow-in {
   transform: translateX(25px);
 }
@@ -220,25 +294,19 @@
   transition: letter-spacing 0.4s ease;
 }
 
-/* --- HOVER STATES --- */
-
-
 .premium-back-btn:hover .back-text {
   letter-spacing: 0.2em;
-  /* Subtle text stretch */
 }
 
-/* Arrow 1 shoots out the left side */
 .premium-back-btn:hover .arrow-out {
   transform: translateX(-25px);
 }
 
-/* Arrow 2 instantly slides into the frame from the right */
 .premium-back-btn:hover .arrow-in {
   transform: translateX(0);
 }
 
-
+/* --- BUTTON MATRIX ACTIONS --- */
 .meta-buttons {
   display: flex;
   gap: 30px;
@@ -336,17 +404,6 @@
   font-weight: 700;
 }
 
-@media (max-width: 768px) {
-  .meta-buttons {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .action-btn {
-    width: 100%;
-  }
-}
-
 .footer-bottom-2 {
   margin-top: 40px;
   padding: 30px 0px;
@@ -360,7 +417,26 @@
   justify-content: center;
 }
 
+/* --- RESPONSIVE MEDIA QUERIES --- */
 @media (max-width: 768px) {
+  .main-visual.carousel-container {
+    padding: 0 20px;
+    margin-bottom: 60px;
+  }
+
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .prev-btn {
+    left: 25px;
+  }
+
+  .next-btn {
+    right: 25px;
+  }
+
   .content-row {
     flex-direction: column;
   }
@@ -379,6 +455,8 @@
   .meta-buttons {
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    gap: 20px;
   }
 
   .action-btn {
