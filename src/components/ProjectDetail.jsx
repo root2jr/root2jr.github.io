@@ -426,7 +426,7 @@ const projectDatas = [{
     resultsText:
         "CORE successfully synthesizes rigorous mathematical workflow variables and real-time physical telemetry into a singular dashboard interface, delivering a premium tool that visually tracks overall personal execution.",
 
-    github: "https://github.com/root2jr/core-os",
+    github: "https://github.com/root2jr/Core",
 }
 ];
 
