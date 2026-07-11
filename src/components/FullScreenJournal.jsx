@@ -210,11 +210,7 @@ const FullscreenJournal = () => {
                     </div>
 
                     {/* DYNAMIC ACTION BRACKETS FOOTER MATRIX */}
-                    <div className="meta-buttons">
-                        <Link className="action-btn outline-btn" to={'/#contact'}>
-                            CONTACT ME
-                        </Link>
-                    </div>
+                    
 
 
                 </div>
