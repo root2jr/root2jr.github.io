@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import axios from 'axios';
-import FullscreenJournal from './FullscreenJournal'; // Path to your newly created editorial layer
 import '../css/Journal.css';
 
 import defaultJournalCover from "../assets/journal.png";
