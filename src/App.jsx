@@ -16,7 +16,7 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import Loader from './components/Loader';
 import Journal from './components/Journal';
-import FullscreenJournal from './components/FullscreenJournal';
+import FullscreenJournal from './components/FullScreenJournal';
 import PromotionalJournalPopup from './components/PromotionalJournalPopup';
 
 
