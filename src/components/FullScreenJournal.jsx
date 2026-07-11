@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import gsap from 'gsap';
 import axios from 'axios';
-import '../css/FullscreenJournal.css';
+import '../css/FullScreenJournal.css';
 import Footer from './Footer';
 import ContactReusable from './ContactReusable';
 import FooterReusable from './FooterReusable';
