@@ -73,7 +73,7 @@ const Footer = () => {
       <div className="marquee-container" style={{ whiteSpace: 'nowrap', display: 'flex' }}>
         <div className="track" ref={marqueeRef} style={{ display: 'flex' }}>
           <div className="marquee-inner" style={{ paddingRight: '50px' }}>
-            OPEN FOR WORK — MERN STACK — REACT NATIVE — AI INTEGRATION —
+            SOFTWARE DEVELOPER— MERN STACK — REACT NATIVE — AI INTEGRATION —
           </div>
         </div>
       </div>
@@ -91,9 +91,10 @@ const Footer = () => {
           <div className="footer-links">
             <h3 className="footer-heading">Sitemap</h3>
             <ul>
-              <li><a href="#about">About</a></li>
-              <li><a href="#experience">Experience</a></li>
-              <li><a href="#selected-works">Projects</a></li>
+              <li><a href="/#about">About</a></li>
+              <li><a href="/#experience">Experience</a></li>
+              <li><a href="/#selected-works">Projects</a></li>
+              <li><a href="/journals">Journals</a></li>
             </ul>
           </div>
 

@@ -1,0 +1,210 @@
+/* ===================================================================
+   PREMIUM EDITORIAL JOURNAL PROMOTIONAL SYSTEM PULSE
+   =================================================================== */
+
+.promo-popup-anchor {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 480px; /* intentional space boundaries for wide viewports */
+  background-color: #050505;
+  color: #ffffff;
+  z-index: 99999;
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 32px;
+  font-family: 'Inter', sans-serif;
+  
+  /* Matches your .outline-btn initial styling state */
+  position: fixed;
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* ─── TECHNICAL BRACKET BORDERS MATRIX (Matches .outline-btn Specs) ─── */
+.promo-popup-anchor::before,
+.promo-popup-anchor::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: 1;
+}
+
+.promo-popup-anchor::before {
+  top: 0;
+  left: 0;
+  border-top: 2px solid #333;
+  border-left: 2px solid #333;
+}
+
+.promo-popup-anchor::after {
+  bottom: 0;
+  right: 0;
+  border-bottom: 2px solid #333;
+  border-right: 2px solid #333;
+}
+
+/* Hover State Mutations */
+.promo-popup-anchor:hover::before,
+.promo-popup-anchor:hover::after {
+  width: 100%;
+  height: 100%;
+  border-color: #ffffff;
+}
+
+.promo-popup-anchor:hover {
+  background: rgba(0, 0, 0, 0.945);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+}
+
+.promo-popup-layout {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Monochromatic Dismiss Interactivity */
+.promo-popup-close-btn {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background: transparent;
+  border: none;
+  color: #666;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.3s ease;
+}
+
+.promo-popup-close-btn:hover {
+  color: #ffffff;
+}
+
+/* ─── TYPOGRAPHY SUB-MATRIX ─── */
+.promo-eyebrow-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.promo-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+.promo-eyebrow-text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.promo-title {
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin: 4px 0 0px;
+  color: #ffffff;
+  
+  /* Two-line text containment clamping block */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.promo-description {
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: #bbb;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Action Footer Layout Engine */
+.promo-action-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #111;
+  padding-top: 18px;
+  margin-top: 8px;
+}
+
+.promo-link-bracket {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.promo-action-text {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #ffffff;
+  transition: letter-spacing 0.4s ease;
+}
+
+.promo-popup-anchor:hover .promo-action-text {
+  letter-spacing: 0.2em;
+}
+
+.promo-kinetic-arrow {
+  display: inline-block;
+  font-size: 0.9rem;
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.promo-popup-anchor:hover .promo-kinetic-arrow {
+  transform: translateX(6px);
+}
+
+.promo-timestamp-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #444;
+}
+
+/* ===================================================================
+   RESPONSIVE LAYOUT RUNTIMES
+   =================================================================== */
+
+@media (max-width: 768px) {
+  .promo-popup-anchor {
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+    width: auto;
+    padding: 24px;
+  }
+  
+  .promo-title {
+    font-size: 1.35rem;
+  }
+  
+  .promo-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+}

@@ -25,7 +25,7 @@ const experienceData = [
         company: "Columbus Mckinnon Corporation EMEA",
         period: "Jan 2026 – Present",
         description: `<ul><li><strong>Systems Management:</strong> Orchestrating global digital workflows across CMS, PIM, and DAM ecosystems to maintain data integrity and asset distribution.<br/></li><li><strong>AI Research</strong>: Architecting a self-hosted LLM framework to optimize internal marketing operations through local inference and private RAG systems. <br/> </li><li><strong>Strategic Optimization:</strong> Analyzing enterprise infrastructure to propose secure, cost-effective AI solutions that ensure complete data sovereignty.</li></ul>`,
-        skills: ["MS-Excel", "CMS", "PIM", "DAM", "HTML", "CSS", "Artificial Intelligence", "LLM"]
+        skills: ["MS-Excel", "CMS", "PIM", "DAM","CodeTwo","SproutSocial","Hotjar","Popup-Smart", "HTML", "CSS", "Artificial Intelligence", "LLM"]
     },
 ];
 

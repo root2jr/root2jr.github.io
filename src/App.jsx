@@ -15,6 +15,9 @@ import { IoLogoWhatsapp } from 'react-icons/io5';
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import Loader from './components/Loader';
+import Journal from './components/Journal';
+import FullscreenJournal from './components/FullscreenJournal';
+import PromotionalJournalPopup from './components/PromotionalJournalPopup';
 
 
 function Home() {
@@ -49,6 +52,7 @@ function Home() {
           <Skills />
           <Projects />
           <Education />
+          <PromotionalJournalPopup />
           <Contact />
           <Footer />
           <a href={whatsappUrl}><IoLogoWhatsapp ref={logoRef} className='whatsapp-logo' size={50} style={{ position: "fixed", bottom: 20, right: 20, padding: 10, borderRadius: "50%", background: "#25D366", zIndex: 99, textDecoration: "none", boxShadow: "0px 4px 10px rgba(0,0,0,0.3)" }} color="white" /></a>
@@ -64,6 +68,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/journals" element={<Journal />} />
+        <Route path="/journals/:id" element={<FullscreenJournal />} />
         <Route path="/project/:id" element={<ProjectDetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

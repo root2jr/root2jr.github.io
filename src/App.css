@@ -38,3 +38,7 @@
   scrollbar-width: thin;
   scrollbar-color: #333 #050505;
 }
+
+.app{
+  overflow: hidden;
+}
